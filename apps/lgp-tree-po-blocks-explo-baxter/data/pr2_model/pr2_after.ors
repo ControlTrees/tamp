@@ -1,0 +1,40 @@
+joint worldTranslationRotation (world base_footprint){ type=8  ctrl_H=3 }
+
+## attach a shape to the 'virtual' gripper frame: to prevent it being pruned
+shape l_gripper_frame (l_gripper_l_finger_tip_frame){ type=5 size=[.1 0 0 0] }
+shape r_gripper_frame (r_gripper_l_finger_tip_frame){ type=5 size=[.1 0 0 0] }
+
+## CASTERS
+Edit fl_caster_rotation_joint {   type=10   }
+Edit fl_caster_l_wheel_joint {   type=10   }
+Edit fl_caster_r_wheel_joint {   type=10   }
+Edit fr_caster_rotation_joint {   type=10   }
+Edit fr_caster_l_wheel_joint {   type=10   }
+Edit fr_caster_r_wheel_joint {   type=10   }
+Edit bl_caster_rotation_joint {   type=10   }
+Edit bl_caster_l_wheel_joint {   type=10   }
+Edit bl_caster_r_wheel_joint {   type=10   }
+Edit br_caster_rotation_joint {   type=10   }
+Edit br_caster_l_wheel_joint {   type=10   }
+Edit br_caster_r_wheel_joint {   type=10   }
+
+# Peter's I-gain limits added:
+Edit worldTranslationRotation {  ctrl_H=20  }
+Edit head_pan_joint{  ctrl_limits=[ 6 2.645 0.5]  }
+Edit r_shoulder_pan_joint {  ctrl_limits=[ 2.088 30 4]  }
+Edit l_shoulder_pan_joint {   ctrl_limits=[ 2.088 30 4]  }
+Edit head_tilt_joint {  ctrl_limits=[ 5 18 0.1]  }
+Edit r_shoulder_lift_joint {  ctrl_limits=[ 2.082 30 4]  }
+Edit l_shoulder_lift_joint {   ctrl_limits=[ 2.082 30 4]  }
+Edit r_upper_arm_roll_joint {  ctrl_limits=[ 3.27 30 4]  }
+Edit l_upper_arm_roll_joint {  ctrl_limits=[ 3.27 30 4]  }
+Edit r_elbow_flex_joint {  ctrl_limits=[ 3.3 30 4]  }
+Edit l_elbow_flex_joint { ctrl_limits=[ 3.3 30 4]  }
+Edit r_forearm_roll_joint {  ctrl_limits=[ 3.6 30 2]  }
+Edit l_forearm_roll_joint {  ctrl_limits=[ 3.6 30 2]  }
+Edit r_wrist_flex_joint {  ctrl_limits=[ 3.078 10 2]  }
+Edit l_wrist_flex_joint {  ctrl_limits=[ 3.078 10 2]  }
+Edit r_wrist_roll_joint {  ctrl_limits=[ 3.6 10 2]  }
+Edit l_wrist_roll_joint {  ctrl_limits=[ 3.6 10 2]  }
+
+Delete shape visual

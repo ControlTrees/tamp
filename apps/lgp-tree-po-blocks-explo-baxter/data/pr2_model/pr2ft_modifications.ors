@@ -1,0 +1,91 @@
+
+## SHAPES
+Edit base_link_0 { contact }
+Edit base_footprint { contact }
+Edit base_bellow_link { contact }
+Edit fl_caster_rotation_link_0 { contact }
+Edit fl_caster_l_wheel_link { contact }
+Edit fl_caster_r_wheel_link { contact }
+Edit fr_caster_rotation_link_0 { contact }
+Edit fr_caster_l_wheel_link { contact }
+Edit fr_caster_r_wheel_link { contact }
+Edit bl_caster_rotation_link_0 { contact }
+Edit bl_caster_l_wheel_link { contact }
+Edit bl_caster_r_wheel_link { contact }
+Edit br_caster_rotation_link_0 { contact }
+Edit br_caster_l_wheel_link { contact }
+Edit br_caster_r_wheel_link { contact }
+Edit torso_lift_link_0 { contact }
+Edit head_pan_link_0 { contact }
+Edit head_tilt_link_0 { contact }
+Edit head_plate_frame { contact }
+Edit head_mount_link { contact }
+Edit head_mount_kinect_ir_link { contact }
+Edit head_mount_kinect_rgb_link { contact }
+Edit head_mount_prosilica_link { contact }
+Edit laser_tilt_mount_link_0 { contact }
+Edit r_shoulder_pan_link_0 { contact }
+Edit r_shoulder_lift_link_0 { contact }
+Edit r_upper_arm_roll_link_0 { contact }
+Edit r_upper_arm_link_0 { contact }
+Edit r_forearm_roll_link_0 { contact }
+Edit r_elbow_flex_link_0 { contact }
+Edit r_forearm_link_0 { contact }
+Edit r_wrist_flex_link_0 { contact }
+Edit r_wrist_roll_link_0 { contact }
+Edit r_gripper_palm_link_0 { contact }
+Edit r_gripper_motor_accelerometer_link { contact }
+Edit r_gripper_l_finger_link_0 { contact }
+Edit r_gripper_r_finger_link_0 { contact }
+Edit r_gripper_l_finger_tip_link_0 { contact }
+Edit r_gripper_r_finger_tip_link_0 { contact }
+Edit l_shoulder_pan_link_0 { contact }
+Edit l_shoulder_lift_link_0 { contact }
+Edit l_upper_arm_roll_link_0 { contact }
+Edit l_upper_arm_link_0 { contact }
+Edit l_forearm_roll_link_0 { contact }
+Edit l_elbow_flex_link_0 { contact }
+Edit l_forearm_link_0 { contact }
+Edit l_wrist_flex_link_0 { contact }
+Edit l_wrist_roll_link_0 { contact }
+Edit l_gripper_palm_link_0 { contact }
+Edit l_gripper_motor_accelerometer_link { contact }
+Edit l_gripper_l_finger_link_0 { contact }
+Edit l_gripper_r_finger_link_0 { contact }
+Edit l_gripper_l_finger_tip_link_0 { contact }
+Edit l_gripper_r_finger_tip_link_0 { contact }
+
+## TORS0
+Edit torso_lift_joint { q=.1    ctrl_H=3000  gains=[0 0] gains=[100000 10] }
+
+## HEAD
+Edit head_pan_joint {    gains=[20 2] }
+Edit head_tilt_joint {   gains=[60 4] }
+
+## RIGHT
+Edit r_shoulder_pan_joint { q=-1   gains=[150 10]  }
+Edit r_shoulder_lift_joint { q=.5   gains=[150 10] }
+Edit r_upper_arm_roll_joint { q=-1   gains=[30 4] }
+Edit r_elbow_flex_joint {  q=-2  gains=[30 4] }
+Edit r_forearm_roll_joint { q=-1.5  gains=[10 2] }
+Edit r_wrist_flex_joint { q=0 gains=[6 2] }
+Edit r_wrist_roll_joint { q=-.5  gains=[12 2] }
+
+## LEFT
+Edit l_shoulder_pan_joint {   q=1   gains=[200 20] }
+Edit l_shoulder_lift_joint {  q=.5   gains=[160 10] }
+Edit l_upper_arm_roll_joint { q=1  gains=[80 4] }
+Edit l_elbow_flex_joint {     q=-2  gains=[70 4] }
+Edit l_forearm_roll_joint {   q=1.5  gains=[10 1] }
+Edit l_wrist_flex_joint {     q=0  gains=[30 1]}
+Edit l_wrist_roll_joint {     q=.5  gains=[15 1]}
+
+## GRIPPERS
+Edit r_gripper_joint {  gains=[1000 1] }
+Edit l_gripper_joint {  gains=[1000 1] }
+
+## FT sensors
+shape r_ft_sensor (r_wrist_roll_link){ rel=<T t(.01 0 0) d(-90 0 1 0) d(70.015 0 0 1)> type=4 color=[1 0 0] size=[.0 .0 .0356 .02] }
+shape l_ft_sensor (l_wrist_roll_link){ rel=<T t(.01 0 0) d(-90 0 1 0) d(70.015 0 0 1)> type=4 color=[1 0 0] size=[.0 .0 .0356 .02] }
+Edit r_wrist_roll_joint{ to=<T t(.0356 0 0)> }
+Edit l_wrist_roll_joint{ to=<T t(.0356 0 0)> }

@@ -1,0 +1,52 @@
+* long video: hand code a long assembly sequence
+
+* pose optim heuristic - maybe really good?
+
+* have a mode only doing mc planning...
+
+
+# search:
+
+in checkConsistency: (DONE)
+ fol.setState(folState);
+ fol.get_actions...
+ check exact match with children
+
+When adding BLOCK -> recompute all folstates of all nodes (DONE)
+
+when changing start_state:
+  as above, prune all non-existing children (DONE)
+
+always random MC, not priority queue (random tree policy) (DONE)
+
+remove the WAIT thing (DONE)
+
+infeasible -> add symbolic block (which also produces Quit symbol) & remove previous MC statistics! (HOW?)
+
+Always recompute all 'statistics' from leaf statistics only (back project)
+
+remove nodes of the tree? (illustrate RED) (DONE)
+
+# robustness:
+
+optimizer sometimes breaks (Hessian...) -> ? (DONE)
+
+# write:
+
+make algo systematic!!
+
+
+# fluent hand-over:
+
+* Implement FixAttachedObjects TaskMap: For every object O that is attached to a new joint, compute the relative vel to the previous parent, and the relative vel to the new parent. Both should be zero. (Is there a difficulty with quat velocities? modulo?...)
+(DONE, mostly:)
+
+1. Variant: constrain the vel to be zero. (DONE)
+
+* Implement poseTMT, which is quat+pos -- why?
+
+* Implement a TaskMap AboveBox, which is 4D and computes the differences to the box edges (4 inequality constraints) -- why?
+
+
+
+

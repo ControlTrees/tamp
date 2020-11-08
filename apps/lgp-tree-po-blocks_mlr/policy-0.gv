@@ -1,0 +1,23 @@
+digraph g{
+0->2 [ label="(unstack block_3 block_1)" ];
+2->4 [ label="(check block_3)
+(is block_1 block_c),
+(is block_3 block_a),
+p=0.4
+q=0.4" ];
+4->8 [ label="(put-down block_3 tableC_right)" ];
+8->15 [ label="(pick-up block_2 tableC_left)" ];
+15->21 [ label="(stack block_2 block_1)" ];
+21->26 [ label="(pick-up block_3 tableC_right)" ];
+26->32 [ label="(stack block_3 block_2)" ];
+2->5 [ label="(check block_3)
+(is block_1 block_a),
+(is block_3 block_c),
+p=0.6
+q=0.6" ];
+5->11 [ label="(put-down block_3 tableC_right)" ];
+11->18 [ label="(pick-up block_2 tableC_left)" ];
+18->25 [ label="(stack block_2 block_3)" ];
+25->28 [ label="(pick-up block_1 tableC_center)" ];
+28->35 [ label="(stack block_1 block_2)" ];
+}
