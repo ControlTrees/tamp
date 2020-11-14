@@ -6,7 +6,6 @@
 
 //#include <eigen3/Eigen/SparseCholesky>
 
-
 #include <tree_builder.h>
 
 using namespace std;
@@ -99,4 +98,3 @@ int main(int argc, char **argv)
   int ret = RUN_ALL_TESTS();
   return ret;
 }
-

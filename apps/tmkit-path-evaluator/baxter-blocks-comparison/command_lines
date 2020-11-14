@@ -1,9 +1,0 @@
-plan - 4 :
-tmsmt package://baxter_description/urdf/baxter.urdf        sussman-start-4.robray        allowed-collision.robray        tm-blocks.pddl        tm-blocks.py        -q q0.tmp        -g sussman-goal-4.robray         -o baxter-sussman.tmp
-
-gui - 4 :
- tmsmt package://baxter_description/urdf/baxter.urdf \
-       sussman-start-4.robray \
-       allowed-collision.robray \
-       baxter-sussman.tmp \
-       --gui

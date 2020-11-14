@@ -3,14 +3,9 @@ cmake_minimum_required (VERSION 3.5)
 get_filename_component(project_name ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 project(${project_name})
 
-add_definitions(-std=c++11)
-
 #################################
 # Locate MLR libs
 #################################
-
-include_directories( ${MLR_INCLUDE_DIR} )
-link_directories(    ${MLR_LIBRARIES_DIR} )
 
 ################################
 # External libs
@@ -19,6 +14,7 @@ link_directories(    ${MLR_LIBRARIES_DIR} )
 #################################
 # Define executable
 #################################
+add_definitions(-std=c++14)
 
 file(GLOB_RECURSE SOURCES *.cpp *.h)
 file(GLOB_RECURSE HEADERS *.h)

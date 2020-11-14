@@ -12,7 +12,6 @@
 #include <belief_state.h>
 #include <komo_planner_utils.h>
 #include <komo_sparse_planner.h>
-#include <komo_sub_problems_finder.h>
 #include <Core/util.h>
 
 #include <thread>
@@ -176,11 +175,6 @@ void KOMOPlanner::solveAndInform( const MotionPlanningParameters & po, Policy & 
     ADMMCompressedPlanner planner(config_, komoFactory_);
     planner.setDecompositionStrategy(po.getParam("decompositionStrategy"), po.getParam("nJobs"));
     planner.optimize(policy, startKinematics_);
-  }
-  else if( po.getParam( "type" ) == "ADMMDecompose" )
-  {
-    KOMOSubProblemsFinder analyser(config_, komoFactory_);
-    analyser.analyse(policy, startKinematics_);
   }
   else
   {

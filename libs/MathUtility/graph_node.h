@@ -109,7 +109,7 @@ public:
   void removeChild( const ptr & child )
   {
     child->removeParent( this->shared_from_this() );
-    children_.remove( child ); 
+    children_.remove( child );
   }
 
   void clearChildren()
@@ -168,4 +168,3 @@ private:
 
 template < typename T > std::map< uint, uint > GraphNode< T >::counter_;
 template < typename T > uint GraphNode< T >::graphCounter_ = 0;
-

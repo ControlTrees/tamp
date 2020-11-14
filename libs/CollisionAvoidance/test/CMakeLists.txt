@@ -1,8 +1,5 @@
 cmake_minimum_required (VERSION 2.8)
 
-get_filename_component(project_name ${CMAKE_CURRENT_SOURCE_DIR} NAME)
-string(REPLACE " " "_" project_name ${project_name})
-
 # list all tests
 file(GLOB_RECURSE tests *.cpp)
 
@@ -17,10 +14,8 @@ foreach(test ${tests})
     add_executable(${test_name} ${test})
     target_link_libraries(${test_name}
                           KOMO
-                          #${GTEST_LIBRARIES}
                           gtest
                           pthread
-                          #Eigen3::Eigen
                           )
 endforeach()
 

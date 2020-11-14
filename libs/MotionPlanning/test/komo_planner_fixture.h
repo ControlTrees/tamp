@@ -11,9 +11,8 @@
 #include <Kin/TM_AboveBox.h>
 #include <Kin/TM_qLimits.h>
 
-#include <gtest/gtest.h>
 #include <functional>
-
+#include <gtest/gtest.h>
 
 using namespace std;
 using namespace mp;

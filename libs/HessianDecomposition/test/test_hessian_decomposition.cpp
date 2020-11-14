@@ -1,5 +1,4 @@
 #include <Core/array.h>
-
 #include <HessianDecomposition/hessian_decomposition.h>
 #include <HessianDecomposition/utils.h>
 
@@ -97,4 +96,3 @@ int main(int argc, char **argv)
   int ret = RUN_ALL_TESTS();
   return ret;
 }
-

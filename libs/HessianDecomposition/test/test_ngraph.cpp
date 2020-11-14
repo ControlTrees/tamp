@@ -1,7 +1,8 @@
 #include <HessianDecomposition/ngraph.h>
 #include <Core/array.h>
-#include <gtest/gtest.h>
 #include <fstream>
+
+#include <gtest/gtest.h>
 
 using namespace std;
 
@@ -192,4 +193,3 @@ int main(int argc, char **argv)
     int ret = RUN_ALL_TESTS();
     return ret;
 }
-

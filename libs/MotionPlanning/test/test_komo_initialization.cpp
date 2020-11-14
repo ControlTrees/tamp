@@ -1,10 +1,11 @@
 #include <KOMO/komo.h>
 
-#include <gtest/gtest.h>
 #include <functional>
 
 #include <Kin/TM_default.h>
 #include <Kin/TM_transition.h>
+
+#include <gtest/gtest.h>
 
 using namespace std;
 
@@ -170,4 +171,3 @@ int main(int argc, char **argv)
     int ret = RUN_ALL_TESTS();
     return ret;
 }
-

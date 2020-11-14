@@ -9,8 +9,6 @@ add_definitions(-std=c++11)
 # Locate MLR libs
 #################################
 
-include_directories( ${MLR_INCLUDE_DIR} )
-link_directories(    ${MLR_LIBRARIES_DIR} )
 
 #################################
 # Define executable
