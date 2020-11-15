@@ -16,9 +16,7 @@ project(${project_name})
 #################################
 add_definitions(-std=c++14)
 
-file(GLOB_RECURSE SOURCES *.cpp *.h)
-file(GLOB_RECURSE HEADERS *.h)
-
+file(GLOB SOURCES *.cpp *.h)
 
 add_library(${project_name} ${SOURCES})
 #set_target_properties(${project_name} PROPERTIES PUBLIC_HEADER "car_kinematic.h")

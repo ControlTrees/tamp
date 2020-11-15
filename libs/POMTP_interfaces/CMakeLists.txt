@@ -15,7 +15,7 @@ link_directories(    ${MLR_LIBRARIES_DIR} )
 #################################
 add_definitions(-std=c++14)
 
-file(GLOB_RECURSE SOURCES *.cpp *.h)
+file(GLOB SOURCES *.cpp *.h)
 
 add_library(${project_name} ${SOURCES})
 target_include_directories(${project_name} PUBLIC ".")

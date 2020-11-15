@@ -15,7 +15,7 @@ find_package(Boost COMPONENTS system filesystem serialization REQUIRED)
 #################################
 add_definitions(-std=c++14 -fPIC)
 
-file(GLOB_RECURSE SOURCES *.cpp *.h *.tpp)
+file(GLOB_RECURSE SOURCES src/*.cpp include/*.h *.tpp)
 
 add_library(${project_name} STATIC ${SOURCES})
 target_include_directories(${project_name} PUBLIC "include")
