@@ -4,7 +4,7 @@ get_filename_component(project_name ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 project(${project_name})
 
 #################################
-# Locate MLR libs
+# Locate depedencies
 #################################
 
 #################################
