@@ -4,7 +4,9 @@ get_filename_component(project_name ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 string(REPLACE " " "_" project_name ${project_name})
 
 # list all tests
-file(GLOB_RECURSE tests *.cpp)
+file(GLOB_RECURSE tests test_*.cpp)
+
+include(CTest)
 
 #find GTest
 find_package(GTest REQUIRED)
@@ -21,6 +23,7 @@ foreach(test ${tests})
                           pthread
                           Optimization
                           )
+    add_test(NAME ${test_name} COMMAND ${test_name})
 endforeach()
 
 # copy directory data

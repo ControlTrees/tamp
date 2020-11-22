@@ -19,10 +19,10 @@ find_package(Boost COMPONENTS system filesystem serialization REQUIRED)
 # Define executable
 #################################
 
-file(GLOB_RECURSE SOURCES *.cpp *.h *.tpp)
+file(GLOB SOURCES *.cpp *.h *.tpp)
 
 add_library(${project_name} STATIC ${SOURCES})
-target_include_directories(${project_name} PUBLIC "include")
+target_include_directories(${project_name} PUBLIC ".")
 target_link_libraries(
  ${project_name}
  ${Boost_LIBRARIES}

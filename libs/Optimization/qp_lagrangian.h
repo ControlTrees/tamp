@@ -2,7 +2,7 @@
 
 #include <Optim/newton.h>
 #include <Optim/constrained.h>
-#include <Optimization/decentralized_optimizer.h>
+#include <decentralized_optimizer.h>
 
 struct QP_Problem
 {

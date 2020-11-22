@@ -1,5 +1,5 @@
-#include <Optimization/decentralized_optimizer.h>
-#include <Optimization/utils.h>
+#include <decentralized_optimizer.h>
+#include <utils.h>
 
 #include <future>
 #include <thread>

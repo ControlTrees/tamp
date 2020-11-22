@@ -4,8 +4,8 @@
 #include <komo_wrapper.h>
 #include <trajectory_tree_visualizer.h>
 
-#include <Optimization/utils.h>
-#include <Optimization/decentralized_optimizer.h>
+#include <utils.h>
+#include <decentralized_optimizer.h>
 
 #include <Kin/kin.h>
 #include <Kin/switch.h>

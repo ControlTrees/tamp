@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Optimization/decentralized_lagrangian.h>
+#include <decentralized_lagrangian.h>
 
 #include <Optim/newton.h>
 #include <Optim/constrained.h>
@@ -136,4 +136,4 @@ private:
   void checkGradients() const;
 };
 
-#include <Optimization/decentralized_optimizer.tpp>
+#include <decentralized_optimizer.tpp>

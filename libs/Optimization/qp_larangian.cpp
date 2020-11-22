@@ -1,4 +1,4 @@
-#include <Optimization/qp_lagrangian.h>
+#include <qp_lagrangian.h>
 
 namespace
 {

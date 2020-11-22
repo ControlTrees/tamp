@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 3.5.1, 2020-10-24T21:12:36. -->
+<!-- Written by QtCreator 3.5.1, 2020-11-22T01:34:51. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -71,7 +71,6 @@
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="QString" key="CMakeProjectManager.MakeStep.AdditionalArguments"></value>
       <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
-       <value type="QString">HessianDecomposition</value>
        <value type="QString">test_hessian_decomposition</value>
        <value type="QString">Optimization</value>
        <value type="QString">test_opt_constrained</value>

@@ -12,6 +12,8 @@ set(MLR_INCLUDE_DIR "/home/camille/Dev/mlr/rai/rai")
 #set(DLIB_LIBRARIES_DIR "/usr/local/lib")
 #set(DLIB_INCLUDE_DIR "/usr/local/inlcude/")
 
+enable_testing()
+
 add_subdirectory("libs/HessianDecomposition")
 add_subdirectory("libs/GeometricUtilityTasks")
 add_subdirectory("libs/ObservationTasks")
