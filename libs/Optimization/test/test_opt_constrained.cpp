@@ -32,17 +32,17 @@ TEST(OptConstrained, Distance2DTestHG) {
   EXPECT_NEAR(1.0, x(1), eps_s);
 }
 
-TEST(OptConstrained, SimpleParabolWithFTerm) {
-  arr x{1.0};
-  arr dual; //dual
+//TEST(OptConstrained, SimpleParabolWithFTerm) {
+//  arr x{1.0};
+//  arr dual; //dual
 
-  ParabolWithFTerm pb;
+//  ParabolWithFTerm pb;
 
-  OptConstrained opt(x, dual, pb);
-  opt.run();
+//  OptConstrained opt(x, dual, pb);
+//  opt.run();
 
-  EXPECT_NEAR(0.5, x(0), eps_s);
-}
+//  EXPECT_NEAR(0.5, x(0), eps_s);
+//}
 
 TEST(OptConstrained, MultipleRuns) {
   arr x{1.0, 2.0};
