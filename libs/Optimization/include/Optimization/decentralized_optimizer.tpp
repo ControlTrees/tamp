@@ -43,7 +43,7 @@ void AverageUpdater::updateZ(arr& z,
   for(auto i = 0; i < N; ++i)
   {
     const auto& x = xs[i];
-    const auto& lambda = DLs[i]->lambda;
+    //const auto& lambda = DLs[i]->lambda;
     const auto& var = vars[i];
 
     //arr zinc = x;
@@ -103,8 +103,8 @@ DecOptConstrained<T, U>::DecOptConstrained(arr& _z, std::vector<std::shared_ptr<
   : z_final(_z)
   , N(Ps.size())
   , contribs(zeros(z_final.d0))
-  , zUpdater(_zUpdater)
   , z(z_final.copy())
+  , zUpdater(_zUpdater)
   , config(_config)
 {
   // maybe preferable to have the same pace for ADMM and AULA terms -> breaks convergence is set to 2.0, strange!
@@ -345,6 +345,8 @@ bool DecOptConstrained<T, U>::stepSequential()
   // update
   z_prev = z;
   updateZ();
+
+  return true;
 }
 
 template <typename T, typename U>
@@ -376,6 +378,8 @@ bool DecOptConstrained<T, U>::stepParallel()
   // update
   z_prev = z;
   updateZ();
+
+  return true;
 }
 
 template <typename T, typename U>
@@ -474,6 +478,7 @@ bool DecOptConstrained<T, U>::step(DecLagrangianType& DL, OptNewton& newton, arr
     //case logBarrier:     L.muLB /= 2.;  break;
     case squaredPenaltyFixed: HALT("you should not be here"); break;
     case noMethod: HALT("need to set method before");  break;
+    default: HALT("method not handled")
   }
 
   if(!!dual) dual=L.lambda;

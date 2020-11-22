@@ -4,7 +4,7 @@ get_filename_component(project_name ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 string(REPLACE " " "_" project_name ${project_name})
 project(${project_name})
 
-add_definitions(-std=c++11)
+add_definitions(-std=c++14)
 
 set(MLR_LIBRARIES_DIR "/home/camille/Dev/mlr/rai/lib")
 set(MLR_INCLUDE_DIR "/home/camille/Dev/mlr/rai/rai")
