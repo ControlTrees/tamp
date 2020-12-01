@@ -70,14 +70,14 @@ class Newton: # sum of square problems
     def __init__(self, function):
         self.function = function
         self.lambda_0 = 0.1
-        self.rho = 0.01  # wolfe
+        self.rho = 0.1  # wolfe - minimum acceptaded decrease
         self.eps = 0.01  # update size
 
         assert issubclass(type(function), NewtonFunction), "wrong function type"
 
     def run(self, x, observer=None):
         _lambda = self.lambda_0
-        _alpha = 1
+        _alpha = 1.0
 
         if observer:
             observer.on_newton_start(x)
@@ -97,23 +97,24 @@ class Newton: # sum of square problems
             # print("A:\n{}".format(A))
             # print("g:\n{}".format(-B))
             # print("Delta:\n{}".format(d))
-
-            v = self.function.value(x)
-            w = self.function.value(x + _alpha * d)   # line search
-
             if observer:
                 observer.on_newton_line_search(x)
 
-            while w > v + self.rho * np.matmul(np.transpose(B), _alpha * d):
+            v = self.function.value(x)
+            w = self.function.value(x + _alpha * d)   # line search
+            w2 = v + self.rho * np.matmul(np.transpose(B), _alpha * d)
+
+            while w > w2:
                 _alpha = _alpha * 0.5
                 w = self.function.value(x + _alpha * d)
+                w2 = v + self.rho * np.matmul(np.transpose(B), _alpha * d)
 
                 if observer:
                     observer.on_newton_line_search(x)
 
             x = x + _alpha * d
 
-            _alpha = 1
+            _alpha = min(1.2 * _alpha, 1.0)
 
             if np.linalg.norm(_alpha * d) < self.eps:
                 break

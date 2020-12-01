@@ -3,18 +3,42 @@
   <component name="ChangeListManager">
     <list default="true" id="bc3df9aa-9300-4f70-9b75-cee7ee09a17e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../../../../rai" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../rai" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GeometricUtilityTasks/axis_bound.h" beforeDir="false" afterPath="$PROJECT_DIR$/../GeometricUtilityTasks/axis_bound.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GeometricUtilityTasks/car_kinematic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../GeometricUtilityTasks/car_kinematic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GeometricUtilityTasks/circular_obstacle.h" beforeDir="false" afterPath="$PROJECT_DIR$/../GeometricUtilityTasks/circular_obstacle.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GeometricUtilityTasks/road_bound.h" beforeDir="false" afterPath="$PROJECT_DIR$/../GeometricUtilityTasks/road_bound.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Optimization/include/Optimization/decentralized_lagrangian.h" beforeDir="false" afterPath="$PROJECT_DIR$/../Optimization/include/Optimization/decentralized_lagrangian.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Optimization/include/Optimization/decentralized_lagrangian.tpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Optimization/include/Optimization/decentralized_lagrangian.tpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Optimization/include/Optimization/decentralized_optimizer.h" beforeDir="false" afterPath="$PROJECT_DIR$/../Optimization/include/Optimization/decentralized_optimizer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Optimization/include/Optimization/decentralized_optimizer.tpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Optimization/include/Optimization/decentralized_optimizer.tpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CMakeLists.txt.user" beforeDir="false" afterPath="$PROJECT_DIR$/../../CMakeLists.txt.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CollisionAvoidance/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../CollisionAvoidance/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GeometricUtilityTasks/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../GeometricUtilityTasks/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HessianDecomposition/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../HessianDecomposition/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MathUtility/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../MathUtility/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MotionPlanning/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../MotionPlanning/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MotionPlanning/komo_sparse_planner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MotionPlanning/komo_sparse_planner.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MotionPlanning/komo_sub_problems_finder.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../MotionPlanning/komo_sub_problems_finder.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MultiAgentTaskPlanning/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../MultiAgentTaskPlanning/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ObservationTasks/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../ObservationTasks/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Optimization/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/include/Optimization/decentralized_lagrangian.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/include/Optimization/decentralized_lagrangian.tpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/include/Optimization/decentralized_optimizer.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/include/Optimization/decentralized_optimizer.tpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/include/Optimization/qp_lagrangian.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/include/Optimization/utils.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/src/qp_larangian.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/src/utils.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/test/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Optimization/test/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/test/functions.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Optimization/test/functions.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/test/qp_problems.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Optimization/test/qp_problems.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/test/test_dec_opt_constrained.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Optimization/test/test_dec_opt_constrained.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/test/test_opt_constrained.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Optimization/test/test_opt_constrained.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/test/test_qp.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Optimization/test/test_qp.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optimization/test/test_utils.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Optimization/test/test_utils.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/optimization/augmented_lagrangian_solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimization/augmented_lagrangian_solver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optimization/newton.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimization/newton.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimization/decentralized_aula.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimization/decentralized_aula.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimization/optimization_problems.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimization/optimization_problems.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/optimization/qp_solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimization/qp_solver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/optimization/test/observers.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimization/test/observers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimization/test/test_augmented_lagrangian_solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimization/test/test_augmented_lagrangian_solver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/optimization/test/test_qp_solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimization/test/test_qp_solver.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/optimization/qp_solver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="62" column="53" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
+            <state relative-caret-position="285">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -52,20 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/optimization/optimization_problems.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="19" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/optimization/augmented_lagrangian_solver.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-253">
-              <caret line="106" column="16" lean-forward="true" selection-start-line="106" selection-start-column="16" selection-end-line="106" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="420">
+              <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -73,8 +85,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/optimization/newton.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="111" column="53" selection-start-line="111" selection-start-column="53" selection-end-line="111" selection-end-column="53" />
+            <state relative-caret-position="1560">
+              <caret line="105" selection-start-line="105" selection-end-line="105" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -85,36 +97,28 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/optimization/test/test_qp_solver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/optimization/apps/qp_solver_super_parameters.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="76" column="8" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
+            <state relative-caret-position="960">
+              <caret line="68" selection-start-line="68" selection-end-line="68" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/nose/case.py">
+        <entry file="file://$PROJECT_DIR$/optimization/test/test_qp_decomposition.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2003">
-              <caret line="196" column="9" selection-start-line="196" selection-start-column="9" selection-end-line="196" selection-end-column="9" />
+            <state relative-caret-position="990">
+              <caret line="70" selection-start-line="70" selection-end-line="70" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/komo/main.py">
+        <entry file="file://$PROJECT_DIR$/optimization/decentralized_aula.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-478">
+            <state relative-caret-position="1155">
+              <caret line="81" selection-start-line="81" selection-end-line="81" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -123,10 +127,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/optimization/test/observers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="48" column="62" selection-start-line="48" selection-start-column="62" selection-end-line="48" selection-end-column="62" />
+            <state relative-caret-position="2115">
+              <caret line="142" column="27" selection-start-line="142" selection-start-column="27" selection-end-line="142" selection-end-column="27" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/optimization/qp_decomposition.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="54" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/optimization/admm_solver.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -143,9 +171,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>task_maps</find>
-      <find>equality_constraint</find>
-      <find>pb</find>
       <find>EQ</find>
       <find>time()</find>
       <find>get_step</find>
@@ -168,11 +193,14 @@
       <find>4590</find>
       <find>UnconstrainedQP</find>
       <find>Plotter2D</find>
-      <find>SquareDistance3DDecomp0</find>
       <find>Plotter3D</find>
       <find>on_newton_step</find>
       <find>ConstrainedQP</find>
       <find>ConstrainedQPSolver</find>
+      <find>SquareDistance3DDecomp0</find>
+      <find>DecentralizedAugmentedLagrangianSolverN</find>
+      <find>admm |x-z|=</find>
+      <find>np.abs</find>
     </findStrings>
     <replaceStrings>
       <replace>cx</replace>
@@ -180,13 +208,11 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test/test_kinematic_engine.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$USER_HOME$/tmp/path.py" />
         <option value="$USER_HOME$/tmp/markers.py" />
         <option value="$USER_HOME$/tm-examples/extract-timing.py" />
@@ -218,24 +244,26 @@
         <option value="$PROJECT_DIR$/optimization/admm_solver.py" />
         <option value="$PROJECT_DIR$/optimization/test/functions.py" />
         <option value="$PROJECT_DIR$/optimization/test/test_benchmark.py" />
-        <option value="$PROJECT_DIR$/optimization/optimization_problems.py" />
         <option value="$PROJECT_DIR$/optimization/test/test_decentralized_aula.py" />
-        <option value="$PROJECT_DIR$/optimization/decentralized_aula.py" />
         <option value="$PROJECT_DIR$/graph/k-cut" />
         <option value="$PROJECT_DIR$/graph/k-cut.py" />
         <option value="$PROJECT_DIR$/graph/data/H_data" />
         <option value="$PROJECT_DIR$/graph/spectral_clustering.py" />
         <option value="$USER_HOME$/git/catkin_ws/src/rss_2020/control_tree_car/src/batch_launches.py" />
         <option value="$USER_HOME$/git/catkin_ws/src/rss_2020/control_tree_car/src/obstacle_batch_launches.py" />
-        <option value="$PROJECT_DIR$/optimization/test/test_augmented_lagrangian_solver.py" />
-        <option value="$PROJECT_DIR$/optimization/newton.py" />
-        <option value="$PROJECT_DIR$/optimization/test/test_qp_solver.py" />
         <option value="$PROJECT_DIR$/optimization/apps/qp_super_parameters.py" />
         <option value="$PROJECT_DIR$/optimization/apps/test_qp_solver.py" />
-        <option value="$PROJECT_DIR$/optimization/augmented_lagrangian_solver.py" />
-        <option value="$PROJECT_DIR$/optimization/qp_solver.py" />
-        <option value="$PROJECT_DIR$/optimization/test/observers.py" />
         <option value="$PROJECT_DIR$/optimization/apps/qp_solver_super_parameters.py" />
+        <option value="$PROJECT_DIR$/optimization/augmented_lagrangian_solver.py" />
+        <option value="$PROJECT_DIR$/optimization/test/test_augmented_lagrangian_solver.py" />
+        <option value="$PROJECT_DIR$/optimization/qp_solver.py" />
+        <option value="$PROJECT_DIR$/optimization/optimization_problems.py" />
+        <option value="$PROJECT_DIR$/optimization/decentralized_aula.py" />
+        <option value="$PROJECT_DIR$/optimization/test/observers.py" />
+        <option value="$PROJECT_DIR$/optimization/test/test_qp_solver.py" />
+        <option value="$PROJECT_DIR$/optimization/test/test_qp_decomposition.py" />
+        <option value="$PROJECT_DIR$/optimization/newton.py" />
+        <option value="$PROJECT_DIR$/optimization/qp_decomposition.py" />
       </list>
     </option>
   </component>
@@ -251,46 +279,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="PyKomo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PyKomo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PyKomo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PyKomo" type="462c0819:PsiDirectoryNode" />
-              <item name="komo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PyKomo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PyKomo" type="462c0819:PsiDirectoryNode" />
-              <item name="optimization" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PyKomo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PyKomo" type="462c0819:PsiDirectoryNode" />
-              <item name="optimization" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PyKomo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PyKomo" type="462c0819:PsiDirectoryNode" />
-              <item name="optimization" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/optimization/apps" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../finance" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -303,11 +299,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/optimization" />
+      <recent name="$PROJECT_DIR$/optimization/test" />
       <recent name="$PROJECT_DIR$/optimization/apps" />
       <recent name="$PROJECT_DIR$/graph/data" />
       <recent name="$PROJECT_DIR$/graph" />
-      <recent name="$PROJECT_DIR$/optimization/test" />
-      <recent name="$PROJECT_DIR$/optimization" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -322,23 +318,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Nosetests for qp_solver_super_parameters.test_constrained_2d_qp">
-    <configuration name="Nosetests for qp_solver_super_parameters.test_constrained_2d_qp" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
-      <module name="PyKomo" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="/usr/bin/python3.5" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/optimization/apps" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_regexPattern" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;qp_solver_super_parameters.test_constrained_2d_qp&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Nosetests for test_admm_solver.test_constrained_dist_3d_sphere" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Nosetests for test_qp_decomposition.test_constrained_3d_qp">
+    <configuration name="Nosetests for test_qp_decomposition.test_constrained_2d_qp" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
       <module name="PyKomo" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -349,11 +330,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_regexPattern" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_admm_solver.test_constrained_dist_3d_sphere&quot;" />
+      <option name="_new_target" value="&quot;test_qp_decomposition.test_constrained_2d_qp&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Nosetests for test_decentralized_aula.test_constrained_dec_aula_3d_sphere" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
+    <configuration name="Nosetests for test_qp_decomposition.test_constrained_3d_qp" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
       <module name="PyKomo" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -364,7 +345,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_regexPattern" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_decentralized_aula.test_constrained_dec_aula_3d_sphere&quot;" />
+      <option name="_new_target" value="&quot;test_qp_decomposition.test_constrained_3d_qp&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -383,7 +364,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Nosetests for test_qp_solver.test_constrained_qp" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
+    <configuration name="Nosetests for test_qp_solver.test_constrained_3d_qp" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
       <module name="PyKomo" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -394,7 +375,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_regexPattern" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_qp_solver.test_constrained_qp&quot;" />
+      <option name="_new_target" value="&quot;test_qp_solver.test_constrained_3d_qp&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -428,6 +409,21 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Nosetests in test_qp_decomposition.py" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
+      <module name="PyKomo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="/usr/bin/python3.5" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/optimization/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/optimization/test/test_qp_decomposition.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="tests" factoryName="Nosetests">
       <module name="optimization" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -444,21 +440,21 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python tests.Nosetests for test_qp_decomposition.test_constrained_2d_qp" />
+      <item itemvalue="Python tests.Nosetests for test_qp_decomposition.test_constrained_3d_qp" />
+      <item itemvalue="Python tests.Nosetests for test_qp_solver.test_constrained_2d_qp" />
+      <item itemvalue="Python tests.Nosetests for test_qp_solver.test_constrained_3d_qp" />
       <item itemvalue="Python tests.Nosetests for test_tree_builder.test_komo" />
       <item itemvalue="Python tests.Nosetests in /home/camille/Dev/mlr/share/projects/17-camille-obsTask/libs/PyKomo/test/test_komo.py" />
-      <item itemvalue="Python tests.Nosetests for test_qp_solver.test_constrained_qp" />
-      <item itemvalue="Python tests.Nosetests for test_admm_solver.test_constrained_dist_3d_sphere" />
-      <item itemvalue="Python tests.Nosetests for test_decentralized_aula.test_constrained_dec_aula_3d_sphere" />
-      <item itemvalue="Python tests.Nosetests for test_qp_solver.test_constrained_2d_qp" />
-      <item itemvalue="Python tests.Nosetests for qp_solver_super_parameters.test_constrained_2d_qp" />
+      <item itemvalue="Python tests.Nosetests in test_qp_decomposition.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Nosetests for qp_solver_super_parameters.test_constrained_2d_qp" />
+        <item itemvalue="Python tests.Nosetests for test_qp_decomposition.test_constrained_3d_qp" />
+        <item itemvalue="Python tests.Nosetests for test_qp_solver.test_constrained_3d_qp" />
+        <item itemvalue="Python tests.Nosetests for test_qp_decomposition.test_constrained_2d_qp" />
         <item itemvalue="Python tests.Nosetests for test_qp_solver.test_constrained_2d_qp" />
-        <item itemvalue="Python tests.Nosetests for test_qp_solver.test_constrained_qp" />
-        <item itemvalue="Python tests.Nosetests for test_decentralized_aula.test_constrained_dec_aula_3d_sphere" />
-        <item itemvalue="Python tests.Nosetests for test_admm_solver.test_constrained_dist_3d_sphere" />
+        <item itemvalue="Python tests.Nosetests in test_qp_decomposition.py" />
       </list>
     </recent_temporary>
   </component>
@@ -476,35 +472,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Nosetests_for_qp_solver_super_parameters_test_constrained_2d_qp - 2020.11.01 at 22h 58m 49s.xml">
-      <configuration name="Nosetests for qp_solver_super_parameters.test_constrained_2d_qp" configurationId="tests" />
+    <history-entry file="Nosetests_for_test_qp_solver_test_constrained_3d_qp - 2020.11.22 at 20h 59m 03s.xml">
+      <configuration name="Nosetests for test_qp_solver.test_constrained_3d_qp" configurationId="tests" />
     </history-entry>
-    <history-entry file="Nosetests_for_qp_solver_super_parameters_test_constrained_2d_qp - 2020.11.01 at 23h 00m 26s.xml">
-      <configuration name="Nosetests for qp_solver_super_parameters.test_constrained_2d_qp" configurationId="tests" />
+    <history-entry file="Nosetests_for_test_qp_decomposition_test_constrained_2d_qp - 2020.11.22 at 21h 00m 29s.xml">
+      <configuration name="Nosetests for test_qp_decomposition.test_constrained_2d_qp" configurationId="tests" />
     </history-entry>
-    <history-entry file="Nosetests_for_qp_solver_super_parameters_test_constrained_2d_qp - 2020.11.01 at 23h 01m 51s.xml">
-      <configuration name="Nosetests for qp_solver_super_parameters.test_constrained_2d_qp" configurationId="tests" />
+    <history-entry file="Nosetests_for_test_qp_decomposition_test_constrained_3d_qp - 2020.11.22 at 21h 02m 02s.xml">
+      <configuration name="Nosetests for test_qp_decomposition.test_constrained_3d_qp" configurationId="tests" />
     </history-entry>
-    <history-entry file="Nosetests_for_qp_solver_super_parameters_test_constrained_2d_qp - 2020.11.01 at 23h 04m 40s.xml">
-      <configuration name="Nosetests for qp_solver_super_parameters.test_constrained_2d_qp" configurationId="tests" />
+    <history-entry file="Nosetests_for_test_qp_solver_test_constrained_3d_qp - 2020.11.22 at 21h 03m 14s.xml">
+      <configuration name="Nosetests for test_qp_solver.test_constrained_3d_qp" configurationId="tests" />
     </history-entry>
-    <history-entry file="Nosetests_for_qp_solver_super_parameters_test_constrained_2d_qp - 2020.11.01 at 23h 14m 10s.xml">
-      <configuration name="Nosetests for qp_solver_super_parameters.test_constrained_2d_qp" configurationId="tests" />
+    <history-entry file="Nosetests_for_test_qp_solver_test_constrained_3d_qp - 2020.11.22 at 21h 16m 28s.xml">
+      <configuration name="Nosetests for test_qp_solver.test_constrained_3d_qp" configurationId="tests" />
     </history-entry>
-    <history-entry file="Nosetests_for_qp_solver_super_parameters_test_constrained_2d_qp - 2020.11.01 at 23h 14m 16s.xml">
-      <configuration name="Nosetests for qp_solver_super_parameters.test_constrained_2d_qp" configurationId="tests" />
+    <history-entry file="Nosetests_for_test_qp_decomposition_test_constrained_3d_qp - 2020.11.22 at 21h 16m 52s.xml">
+      <configuration name="Nosetests for test_qp_decomposition.test_constrained_3d_qp" configurationId="tests" />
     </history-entry>
-    <history-entry file="Nosetests_for_qp_solver_super_parameters_test_constrained_2d_qp - 2020.11.01 at 23h 25m 51s.xml">
-      <configuration name="Nosetests for qp_solver_super_parameters.test_constrained_2d_qp" configurationId="tests" />
+    <history-entry file="Nosetests_for_test_qp_decomposition_test_constrained_2d_qp - 2020.11.22 at 21h 21m 50s.xml">
+      <configuration name="Nosetests for test_qp_decomposition.test_constrained_2d_qp" configurationId="tests" />
     </history-entry>
-    <history-entry file="Nosetests_for_qp_solver_super_parameters_test_constrained_2d_qp - 2020.11.01 at 23h 26m 03s.xml">
-      <configuration name="Nosetests for qp_solver_super_parameters.test_constrained_2d_qp" configurationId="tests" />
+    <history-entry file="Nosetests_for_test_qp_decomposition_test_constrained_3d_qp - 2020.11.22 at 21h 21m 50s.xml">
+      <configuration name="Nosetests for test_qp_decomposition.test_constrained_3d_qp" configurationId="tests" />
     </history-entry>
-    <history-entry file="Nosetests_for_qp_solver_super_parameters_test_constrained_2d_qp - 2020.11.01 at 23h 29m 33s.xml">
-      <configuration name="Nosetests for qp_solver_super_parameters.test_constrained_2d_qp" configurationId="tests" />
+    <history-entry file="Nosetests_for_test_qp_decomposition_test_constrained_3d_qp - 2020.11.22 at 21h 23m 02s.xml">
+      <configuration name="Nosetests for test_qp_decomposition.test_constrained_3d_qp" configurationId="tests" />
     </history-entry>
-    <history-entry file="Nosetests_for_qp_solver_super_parameters_test_constrained_2d_qp - 2020.11.02 at 00h 00m 34s.xml">
-      <configuration name="Nosetests for qp_solver_super_parameters.test_constrained_2d_qp" configurationId="tests" />
+    <history-entry file="Nosetests_for_test_qp_decomposition_test_constrained_3d_qp - 2020.11.22 at 21h 23m 14s.xml">
+      <configuration name="Nosetests for test_qp_decomposition.test_constrained_3d_qp" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -518,15 +514,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-4" width="1857" height="1085" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49884528" visible="true" weight="0.24945416" />
       <window_info id="Structure" order="1" sideWeight="0.5011547" side_tool="true" weight="0.2496124" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32868218" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.39449543" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.50152904" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24974516" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.1304791" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32868218" />
@@ -539,18 +534,18 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49884528" visible="true" weight="0.24945416" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49884528" visible="true" weight="0.24945416" />
       <window_info id="Structure" order="1" sideWeight="0.5011547" side_tool="true" weight="0.2496124" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32868218" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19979613" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4648318" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.16207951" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.50152904" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32868218" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32868218" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32619774" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32517838" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32008156" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -651,6 +646,16 @@
           <line>28</line>
           <option name="timeStamp" value="403" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/optimization/augmented_lagrangian_solver.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="416" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/optimization/test/test_qp_solver.py</url>
+          <line>33</line>
+          <option name="timeStamp" value="424" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -662,17 +667,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/test_kinematic_engine.py" />
-    <entry file="file://$PROJECT_DIR$/test/test_komo.py" />
-    <entry file="file://$PROJECT_DIR$/komo.py" />
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/numpy/linalg/linalg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="398" selection-start-line="398" selection-end-line="398" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_tree_builder.py" />
     <entry file="file://$PROJECT_DIR$/test/test_gauss_newton.py" />
     <entry file="file://$PROJECT_DIR$/test/test_newton.py" />
     <entry file="file://$PROJECT_DIR$/test/test_constrained_opt.py" />
@@ -715,13 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/unittest/case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="627" selection-start-line="627" selection-end-line="627" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/optimization/test/test_gauss_newton.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -749,30 +736,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/optimization/decentralized_aula.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="34" column="43" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/optimization/test/test_benchmark.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/optimization/admm_solver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -872,51 +839,109 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$USER_HOME$/git/catkin_ws/src/rss_2020/control_tree_car/src/batch_launches.py" />
-    <entry file="file://$USER_HOME$/git/catkin_ws/src/rss_2020/control_tree_car/src/obstacle_batch_launches.py">
+    <entry file="file://$USER_HOME$/git/catkin_ws/src/rss_2020/control_tree_car/src/obstacle_batch_launches.py" />
+    <entry file="file://$PROJECT_DIR$/komo/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="62" column="16" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/optimization/test/test_augmented_lagrangian_solver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/optimization/test/test_admm_solver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="75" column="32" lean-forward="true" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
+        <state>
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/optimization/apps/qp_solver_super_parameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="841">
+          <caret line="76" column="8" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/optimization/test/functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="68" column="36" selection-start-line="68" selection-start-column="36" selection-end-line="68" selection-end-column="36" />
+        <state relative-caret-position="1050">
+          <caret line="70" column="29" lean-forward="true" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/optimization/test/test_decentralized_aula.py">
+    <entry file="file://$PROJECT_DIR$/optimization/test/test_admm_solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="9" column="18" selection-start-line="9" selection-end-line="10" />
+        <state relative-caret-position="560">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/optimization/optimization_problems.py">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/unittest/case.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="19" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="19" />
+        <state relative-caret-position="145">
+          <caret line="675" selection-start-line="675" selection-end-line="675" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/nose/suite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="176" selection-start-line="176" selection-end-line="176" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/nose/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="206" selection-start-line="206" selection-end-line="206" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/unittest/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/optimization/test/test_augmented_lagrangian_solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/optimization/test/test_decentralized_aula.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="52" selection-start-line="52" selection-end-line="53" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/nose/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="196" selection-start-line="196" selection-end-line="196" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/optimization/augmented_lagrangian_solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/optimization/qp_solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -930,36 +955,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/optimization/optimization_problems.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/optimization/newton.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="111" column="53" selection-start-line="111" selection-start-column="53" selection-end-line="111" selection-end-column="53" />
+        <state relative-caret-position="1560">
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/komo/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-478">
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/optimization/test/test_qp_solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+        <state relative-caret-position="960">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/optimization/qp_solver.py">
+    <entry file="file://$PROJECT_DIR$/optimization/test/test_qp_decomposition.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="62" column="53" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
+        <state relative-caret-position="990">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/optimization/decentralized_aula.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1155">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -968,35 +998,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/optimization/test/observers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="48" column="62" selection-start-line="48" selection-start-column="62" selection-end-line="48" selection-end-column="62" />
+        <state relative-caret-position="2115">
+          <caret line="142" column="27" selection-start-line="142" selection-start-column="27" selection-end-line="142" selection-end-column="27" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/nose/case.py">
+    <entry file="file://$PROJECT_DIR$/optimization/admm_solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2003">
-          <caret line="196" column="9" selection-start-line="196" selection-start-column="9" selection-end-line="196" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/optimization/augmented_lagrangian_solver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-253">
-          <caret line="106" column="16" lean-forward="true" selection-start-line="106" selection-start-column="16" selection-end-line="106" selection-end-column="16" />
+        <state relative-caret-position="270">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/optimization/apps/qp_solver_super_parameters.py">
+    <entry file="file://$PROJECT_DIR$/optimization/qp_decomposition.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="76" column="8" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
+        <state relative-caret-position="120">
+          <caret line="8" column="54" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

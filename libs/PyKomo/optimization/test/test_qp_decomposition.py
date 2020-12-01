@@ -5,38 +5,14 @@ import numpy as np
 from pathlib import Path
 sys.path.append(str(Path('.').absolute().parent))
 from optimization_problems import UnconstrainedQP, ConstrainedQP, ConstrainedProblem
-from qp_solver import UnconstrainedQPSolver, ConstrainedQPSolver
+from qp_solver import UnconstrainedQPSolver, ConstrainedQPSolver, F, G
+from optimization_problems import ADMMProblem_Newton, ADMMProblemN, ADMMProblem, ConstrainedProblem
+from decentralized_aula import DecentralizedAugmentedLagrangianSolver, DecentralizedAugmentedLagrangianSolverN
+from qp_decomposition import *
 from observers import *
-
-def test_unconstrained_qp():
-    # min x^2 - x
-    qp = UnconstrainedQP(Q=np.array([[2.0]]), c=np.array([-1.0]))
-    solver = UnconstrainedQPSolver(qp)
-    x = solver.run()
-
-    nt.assert_almost_equals(x, 0.5, delta=0.001)
-
-def test_unconstrained_with_constrained_solver():
-    # min x^2 - x
-    qp = UnconstrainedQP(Q=np.array([[2.0]]), c=np.array([-1.0]))
-    solver = ConstrainedQPSolver(qp)
-    x = solver.run(np.array([-1.0]))
-
-    nt.assert_almost_equals(x, 0.5, delta=0.001)
-
-def test_constrained_qp():
-    # min x^2 - x
-    # s.t. x <= 0
-    qp = ConstrainedQP(Q=np.array([[2.0]]), c=np.array([-1.0]), A=np.array([[1.0]]), u=np.array([0.2]))
-    solver = ConstrainedQPSolver(qp)
-    x = solver.run(np.array([-1.0]))
-
-    nt.assert_almost_equals(x, 0.2, delta=0.001)
 
 def test_constrained_2d_qp():
     # s.t. x + y >= 3
-    x0 = np.array([10.0, 1.5])
-
     def background(ax):
         ax.set_aspect(aspect='equal')
         ax.set_xlim(-1, 10.0)
@@ -59,39 +35,60 @@ def test_constrained_2d_qp():
         CS = ax.contour(X, Y, Z, [1.0, 2.0, 3.0])
         ax.clabel(CS, inline=1, fontsize=10)
 
-    p = Plotter2DSimple("2d qp", background=background)
+    x0 = np.array([10.0, 1.5])
 
-    #qp = ConstrainedQP(Q=np.array([[1.0, 1.0], [1.0, 10.0]]), c=np.array([0.0, 0.0]), A=np.array([[-1.0, 0.0]]), u=np.array([-3.0])) # 1 constraint
-    #qp = ConstrainedQP(Q=np.array([[1.0, 1.0], [1.0, 10.0]]), c=np.array([0.0, 0.0]), A=np.array([[-1.0, 0.0], [0.0, -1.0]]), u=np.array([-3.0, -1.0])) # 2 constraints
-    #qp = ConstrainedQP(Q=np.array([[1.0, 1.0], [1.0, 10.0]]), c=np.array([0.0, 0.0]), A=np.array([[-1.0, 0.0], [0.0, -1.0], [0.0, -1.0]]), u=np.array([-3.0, -1.0, -1.0])) # 1 constraint
+    p = Plotter2DSimple("2d decomposed", background=background)
 
     qp = ConstrainedQP(Q=np.array([[1.0, 0.0], [0.0, 1.0]]), c=np.array([-1.0, 0.5]), A=np.array([[-1.0, -1.0]]), u=np.array([-3.0])) # 1 constraints over 2 variables
 
-    solver = ConstrainedQPSolver(qp)
+    # decompose
+    qps = decompose(qp)
+    nt.assert_equals(len(qps), 3)
+
+    # extract pbs
+    pb1 = ConstrainedProblem(f=F(qps[0]), g=G(qps[0]) if qps[0].A is not None else None)
+    pb2 = ConstrainedProblem(f=F(qps[1]), g=G(qps[1]) if qps[1].A is not None else None)
+    pb3 = ConstrainedProblem(f=F(qps[2]), g=G(qps[2]) if qps[2].A is not None else None)
+
+    # give to solver
+    pb = ADMMProblemN(pbs=[pb1, pb2, pb3])
+    solver = DecentralizedAugmentedLagrangianSolverN(pb)
     x = solver.run(x0, observer=p)
 
     p.report(plot=True)
 
-    print("x={}".format(x))
-
+    print("***")
+    print("x={}".format(x)) # x=[2.24957629 0.74957629]
     nt.assert_true(np.allclose(x, np.array([2.24957629, 0.74957629]), rtol=1e-03, atol=1e-03))
 
 
 def test_constrained_3d_qp():
-    x0 = np.array([10.0, 1.5, 2.0])
-
+    # s.t. x + y >= 3
     def background(ax):
         pass
 
-    p = Plotter2DSimple("3d qp", background=background)
+    x0 = np.array([10.0, 1.5, 2.0])
+
+    p = Plotter2DSimple("3d decomposed", background=background)
 
     qp = ConstrainedQP(Q=np.array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]]), c=np.array([-1.0, 0.5, 1.0]), A=np.array([[-1.0, -1.0, -1.0]]), u=np.array([-3.0])) # 1 constraints over 2 variables
 
-    solver = ConstrainedQPSolver(qp)
+    # decompose
+    qps = decompose(qp)
+    nt.assert_equals(len(qps), 3)
+
+    # extract pbs
+    pb1 = ConstrainedProblem(f=F(qps[0]), g=G(qps[0]) if qps[0].A is not None else None)
+    pb2 = ConstrainedProblem(f=F(qps[1]), g=G(qps[1]) if qps[1].A is not None else None)
+    pb3 = ConstrainedProblem(f=F(qps[2]), g=G(qps[2]) if qps[2].A is not None else None)
+
+    # give to solver
+    pb = ADMMProblemN(pbs=[pb1, pb2, pb3])
+    solver = DecentralizedAugmentedLagrangianSolverN(pb)
     x = solver.run(x0, observer=p)
 
     p.report(plot=False)
 
-    print("x={}".format(x))
-
+    print("***")
+    print("x={}".format(x)) # x=[2.24957629 0.74957629]
     #nt.assert_true(np.allclose(x, np.array([2.24957629, 0.74957629]), rtol=1e-03, atol=1e-03))

@@ -83,11 +83,13 @@ class Lagrangian(NewtonFunction):
                 _Jh = np.array([Jh[i]])
                 Hb = 2 * _Jh.T * _Jh  # pseudo hessian of the barrier
 
+                _Hh = Hh[i]
+
                 assert H.shape == Hb.shape, "wrong hessian shapes"
-                assert H.shape == Hh[i].shape, "wrong hessian shapes"
+                assert H.shape == _Hh.shape, "wrong hessian shapes"
 
                 H += self.mu * Hb                   # barrier
-                H += self.lambda_h[i] * Hh[i]       # lagrange
+                H += self.lambda_h[i] * _Hh         # lagrange
 
         if self.pb.g:
             g, Jg, Hg = eval(self.pb.g, x)
@@ -99,10 +101,12 @@ class Lagrangian(NewtonFunction):
                     _Jg = np.array([Jg[i]])
                     Hb = 2 * _Jg.T * _Jg  # pseudo hessian of the barrier
 
-                    assert H.shape == Hb.shape, "wrong hessian shapes"
-                    assert H.shape == Hg[i].shape, "wrong hessian shapes"
+                    _Hg = Hg[i]
 
-                    H += self.mu * Hb + self.lambda_g[i] * Hg[i]
+                    assert H.shape == Hb.shape, "wrong hessian shapes"
+                    assert H.shape == _Hg.shape, "wrong hessian shapes"
+
+                    H += self.mu * Hb + self.lambda_g[i] * _Hg
 
         return H
 

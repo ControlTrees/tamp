@@ -138,3 +138,6 @@ srv_gen
 %% PYCHARM
 share/projects/17-camille-obsTask/*.xml
 *.dat
+libs/PyKomo/optimization/__pycache__/
+*.pyc
+*.user

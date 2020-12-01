@@ -39,7 +39,7 @@ class G(NewtonFunction):
         return self.qp.A
 
     def hessian(self, x):
-        return np.zeros((self.qp.A.shape[0], self.qp.A.shape[0], x.shape[0]))
+        return [np.zeros((x.shape[0], x.shape[0])) for i in range(self.qp.A.shape[0] if len(self.qp.A.shape) > 1 else 1)]
 
     def dim(self):
         return self.qp.A.shape[0]
@@ -56,7 +56,7 @@ class ConstrainedQPSolver:
 
     def run(self, x, observer=None):
         f = F(self.qp)
-        g = G(self.qp)
+        g = G(self.qp) if (hasattr(self.qp, 'A') and self.qp.A is not None) else None
 
         pb = ConstrainedProblem(f=f, g=g)
 

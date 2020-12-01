@@ -28,16 +28,17 @@ class DecentralizedAugmentedLagrangianSolverN:
         z *= 1.0 / masks
         return z
 
-    def ADMMupdate(self, ys, xs, z):
-        e = 0
+    def ADMMupdate(self, ys, xs, z, z_prev):
+        e_pri = 0
+        e_dual = max(np.abs(z_prev - z))
         for i, x in enumerate(xs):
             ys[i] += self.muADMM * (x - z)
-            e = max(np.abs(x - z).max(), e)
+            e_pri = max(np.abs(x - z).max(), e_pri) # dual residual
 
         if self.muADMM == 0.0:
             self.muADMM = 1.0
 
-        return ys, e
+        return ys, e_pri, e_dual
 
     def AULAupdate(self, lambda_h, lambda_g, xs):
         maxH = 0
@@ -45,7 +46,7 @@ class DecentralizedAugmentedLagrangianSolverN:
 
         for i, x in enumerate(xs):
             h = self.pb.pbs[i].h.value(x) if self.pb.pbs[i].h else 0
-            g = self.pb.pbs[i].f.value(x) if self.pb.pbs[i].g else 0
+            g = self.pb.pbs[i].g.value(x) if self.pb.pbs[i].g else 0
 
             lambda_h[i] = lambda_h[i] + 2 * self.mu * h
             lambda_g[i] = lambda_g[i] + 2 * self.mu * g
@@ -83,23 +84,28 @@ class DecentralizedAugmentedLagrangianSolverN:
                 aula = ADMMLagrangian0(Lagrangian(pb=pb,
                                                   lambda_h=lambda_h, lambda_g=lambda_g,
                                                   mu=self.mu),
-                                       xk=z, y=y,
-                                       mu=self.muADMM)
-                #assert aula.checkGradients(x0)
-                #assert aula.checkHessian(x0) # not possible to check for hessian, since the gauss newton approx, leads to, in general, approximated hessian
+                                                  xk=z, y=y,
+                                                  mu=self.muADMM)
+                #assert aula.checkGradients(x)
+                #assert aula.checkHessian(x) # not possible to check for hessian, since the gauss newton approx, leads to, in general, approximated hessian
+
+                if observer:
+                    observer.set_problem(i)
+
                 xs[i] = Newton(aula).run(x, observer=observer)
 
 
             # admm update
+            z_prev = z
             z = self.Z(ys, xs)
-            ys, e = self.ADMMupdate(ys, xs, z)
+            ys, e_pri, e_dual = self.ADMMupdate(ys, xs, z, z_prev)
 
             # aula update
             lambda_hs, lambda_gs, h, g = self.AULAupdate(lambda_hs, lambda_gs, xs)
 
-            print("IT={}, admm |x-z|={}, h={}, lambda_h={}, g={}, lambda_g={}".format(its, e, h, lambda_h, g, lambda_g))
+            print("IT={}, admm |x-z|={}, |z-z'|={}, h={}, lambda_h={}, g={}, lambda_g={}, z={}".format(its, e_pri, e_dual, h, lambda_h, g, lambda_g, z))
 
-            if e < self.eps and np.abs(h) < self.eps and g < self.eps:
+            if e_pri < self.eps and e_dual < self.eps and np.abs(h) < self.eps and g < self.eps:
                 break
 
             its+=1

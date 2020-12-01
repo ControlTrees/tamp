@@ -52,6 +52,9 @@ class Plotter2D:
         self.add_point(x)
         self.n_evals += 1
 
+    def set_problem(self, i):
+        pass
+
     def add_point(self, x):
         self.x.append(x[0])
         self.y.append(x[1])
@@ -74,6 +77,68 @@ class Plotter2D:
                 ax.plot(x, y)
                 ax.scatter(x, y)
             ax.plot(self.aula_start_x, self.aula_start_y, linewidth=6)
+            plt.show()
+
+class Plotter2DSimple:
+    def __init__(self, title, background=None, on_hessian_inversion=None):
+        self.title = title
+        self.background = background
+        self.on_hessian_inversion = on_hessian_inversion
+
+        self.newton_runs = []
+        self.current_problem = 0
+
+        self.n_hessian_inversion = 0
+        self.n_evals = 0
+
+    def on_aula_end(self, x):
+        pass
+
+    def on_aula_start(self, x):
+        pass
+
+    def on_newton_start(self, x):
+        self.newton_runs.append(([(x[0], x[1])], self.current_problem))
+
+    def on_newton_end(self, x):
+        self.add_point(x)
+
+    def on_newton_step(self, x): # x is value at start on newton step
+        self.add_point(x)
+
+        self.n_hessian_inversion += 1
+
+        if self.on_hessian_inversion:
+            self.on_hessian_inversion(self.n_hessian_inversion)
+
+    def on_newton_line_search(self, x):
+        self.add_point(x)
+        self.n_evals += 1
+
+    def set_problem(self, i):
+        self.current_problem = i
+
+    def add_point(self, x):
+        self.newton_runs[-1][0].append(copy.deepcopy(x))
+
+    def report(self, plot=False):
+        print("{} - number of hessian inversion:{}".format(self.title, self.n_hessian_inversion))
+        print("{} - number of evaluations:{}".format(self.title, self.n_evals))
+
+        if plot:
+            fig = plt.figure()
+            ax = fig.add_subplot(111)
+            ax.set_title(self.title)
+
+            if self.background:
+                self.background(ax)
+
+            colors = ['r', 'g', 'b', 'gray', 'yellow']
+
+            for i, (points, I) in enumerate(self.newton_runs):
+                ax.plot([x[0] for x in points], [x[1] for x in points], c=colors[I])
+                #ax.scatter(x, y)
+            #ax.plot(self.aula_start_x, self.aula_start_y, linewidth=6)
             plt.show()
 
 class Plotter3D:
@@ -115,6 +180,12 @@ class Plotter3D:
 
     def on_newton_step(self, x): # x is value at start on newton step
         self.n_evals += 1
+
+    def on_newton_line_search(self, x):
+        pass
+
+    def set_problem(self, i):
+        pass
 
     def add_point(self, x):
         self.x.append(x[0])

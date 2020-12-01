@@ -56,10 +56,9 @@ def test_gradients_aula_ineq_active_constraint():
     nt.assert_true(lagrangian.checkHessian(x0))
 
 def test_constrained_aula_ineq_active_constraint():
-    p = Plotter2D()
+    p = Plotter2D("constrained_aula_ineq_active_constraint")
 
     x0 = np.array([1.0, 1.0])
-    p.add(x0)
 
     pb = ConstrainedProblem(f=SquareDistance(), g=ProjY())
     al = AugmentedLagrangianSolver(pb)
