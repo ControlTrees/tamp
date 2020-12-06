@@ -7,45 +7,7 @@
 #include <functional>
 #include <cassert>
 #include <nearest_neighbor.h>
-
-inline double sample_01()
-{
-  return double(rand()) / RAND_MAX;
-}
-
-template <uint N>
-class SampleSpace
-{
-public:
-  SampleSpace(const std::array<std::pair<double, double>, N> & bounds)
-    : bounds_(bounds)
-  {
-
-  }
-
-  double sample_1d(uint i) const
-  {
-    return bounds_[i].first + sample_01() * (bounds_[i].second - bounds_[i].first);
-  }
-
-  std::array<double, N> sample() const
-  {
-    std::array<double, N> s;
-
-    for(uint i = 0; i < N; ++i)
-      s[i] = sample_1d(i);
-
-    return s;
-  }
-
-  std::array<std::pair<double, double>, N> bounds() const { return bounds_; }
-
-public:
-  static constexpr uint dim = N;
-
-private:
-  std::array<std::pair<double, double>, N> bounds_;
-};
+#include <sample_space.h>
 
 template <std::size_t N>
 struct RRTTreeNode
@@ -184,43 +146,6 @@ public:
       }
     }
 
-    {
-      {
-      std::array<double, 2> s{0.5, 0.9};
-      auto node = kdtree_->nearest_neighbor(s);
-
-      std::cout << "nearest " << node->state[0] << " " << node->state[1] << std::endl;
-
-      backtrack(node->state, s);
-
-      auto from = rrttree_->get_node(node->id);
-      auto to = rrttree_->add_node(s);
-
-      kdtree_->add_node(to->state, to->id);
-      rrttree_->add_edge(from, to);
-
-      std::cout << "add " << s[0] << " " << s[1] << std::endl;
-      }
-
-      {
-      std::array<double, 2> s{0.5, 0.9};
-      auto node = kdtree_->nearest_neighbor(s);
-
-      std::cout << "nearest " << node->state[0] << " " << node->state[1] << std::endl;
-
-      backtrack(node->state, s);
-
-      auto from = rrttree_->get_node(node->id);
-      auto to = rrttree_->add_node(s);
-
-      kdtree_->add_node(to->state, to->id);
-      rrttree_->add_edge(from, to);
-
-      std::cout << "add " << s[0] << " " << s[1] << std::endl;
-
-      }
-    }
-
     // extract solutions
     std::vector<std::deque<std::array<double, S::dim>>> paths;
     std::vector<double> costs;
@@ -269,12 +194,6 @@ public:
         to[i] = from[i] + (to[i] - from[i]) * lambda;
       }
     }
-
-//    if(fabs(to[0] - 0.8) < 0.1 && fabs(to[1] - 0.15) < 0.1)
-//    {
-//      int a;
-//      ++a;
-//    }
 
     // L2
 //    auto d = norm2(from, to);
