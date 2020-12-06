@@ -1,7 +1,10 @@
 #pragma once
 
-#include <rrt.h>
 #include <fstream>
+#include <array>
+#include <vector>
+#include <deque>
+#include <memory>
 
 class MapLoader
 {
@@ -48,6 +51,8 @@ public:
     return (buffer_[ij[0]][ij[1]] == 255);
   }
 
+  const std::vector<std::vector<uint>> & buffer() const { return buffer_; }
+
   std::array<int, 2> get_ij(const std::array<double, 2> & xy) const
   {
     std::array<int, 2>ij;
@@ -63,6 +68,53 @@ private:
   uint ppm_;
 
   std::vector<std::vector<uint>> buffer_;
+};
+
+template<uint W>
+class MultiMap
+{
+public:
+  MultiMap(std::array<std::string, W> filepaths, const std::array<std::pair<double, double>, 2> & bounds)
+  {
+    for(auto w = 0; w < filepaths.size(); ++w)
+    {
+      maps_.emplace_back(MapLoader(filepaths[w], bounds));
+    }
+
+    h_ = maps_[0].buffer().size();
+    w_ = maps_[0].buffer()[0].size();
+
+    // create fuse map, speed up!
+    occupancies_ =   std::vector<std::vector<std::array<double, W>>>(h_);
+
+    for(auto & line: occupancies_)
+    {
+      line = std::vector<std::array<double, W>>(w_);
+    }
+
+    for(auto i = 0; i < h_; ++i)
+    {
+      for(auto j = 0; j < w_; ++j)
+      {
+        for(auto w = 0; w < W; ++w)
+        {
+          occupancies_[i][j][w] = maps_[w].buffer()[i][j] == 255 ? 1 : 0;
+        }
+      }
+    }
+  }
+
+  std::array<double, W> is_state_valid(const std::array<double, 2> & xy) const
+  {
+    const auto ij = maps_[0].get_ij(xy);
+    return occupancies_[ij[0]][ij[1]];
+  }
+
+private:
+  std::vector<MapLoader> maps_;
+  std::vector<std::vector<std::array<double, W>>> occupancies_;
+  uint w_;
+  uint h_;
 };
 
 class Drawer
