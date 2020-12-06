@@ -8,6 +8,11 @@
 #include <cassert>
 #include <nearest_neighbor.h>
 
+inline double sample_01()
+{
+  return double(rand()) / RAND_MAX;
+}
+
 template <uint N>
 class SampleSpace
 {
@@ -20,7 +25,7 @@ public:
 
   double sample_1d(uint i) const
   {
-    return bounds_[i].first + float(rand()) / RAND_MAX * (bounds_[i].second - bounds_[i].first);
+    return bounds_[i].first + sample_01() * (bounds_[i].second - bounds_[i].first);
   }
 
   std::array<double, N> sample() const
@@ -179,11 +184,49 @@ public:
       }
     }
 
+    {
+      {
+      std::array<double, 2> s{0.5, 0.9};
+      auto node = kdtree_->nearest_neighbor(s);
+
+      std::cout << "nearest " << node->state[0] << " " << node->state[1] << std::endl;
+
+      backtrack(node->state, s);
+
+      auto from = rrttree_->get_node(node->id);
+      auto to = rrttree_->add_node(s);
+
+      kdtree_->add_node(to->state, to->id);
+      rrttree_->add_edge(from, to);
+
+      std::cout << "add " << s[0] << " " << s[1] << std::endl;
+      }
+
+      {
+      std::array<double, 2> s{0.5, 0.9};
+      auto node = kdtree_->nearest_neighbor(s);
+
+      std::cout << "nearest " << node->state[0] << " " << node->state[1] << std::endl;
+
+      backtrack(node->state, s);
+
+      auto from = rrttree_->get_node(node->id);
+      auto to = rrttree_->add_node(s);
+
+      kdtree_->add_node(to->state, to->id);
+      rrttree_->add_edge(from, to);
+
+      std::cout << "add " << s[0] << " " << s[1] << std::endl;
+
+      }
+    }
+
     // extract solutions
     std::vector<std::deque<std::array<double, S::dim>>> paths;
     std::vector<double> costs;
     paths.reserve(final_nodes_.size());
     costs.reserve(final_nodes_.size());
+
     if(!final_nodes_.empty())
     {
       const auto path = get_path_to(final_nodes_.back());
@@ -210,20 +253,41 @@ public:
 
   void backtrack(const std::array<double, S::dim>& from, std::array<double, S::dim>& to) const
   {
+    // L1
     double max_step = 0;
-    for(auto i = 0; i < S::dim; ++i)
+    for(uint i = 0; i < S::dim; ++i)
     {
-      const auto delta = fabs(from[i] - to[i]);
+      const double delta = fabs(to[i] - from[i]);
       max_step = std::max(max_step, delta);
     }
 
     if(max_step > max_step_)
     {
-      for(auto i = 0; i < S::dim; ++i)
+      const double lambda = max_step_ / max_step;
+      for(uint i = 0; i < S::dim; ++i)
       {
-        to[i] = from[i] + (to[i] - from[i]) * max_step_ / max_step;
+        to[i] = from[i] + (to[i] - from[i]) * lambda;
       }
     }
+
+//    if(fabs(to[0] - 0.8) < 0.1 && fabs(to[1] - 0.15) < 0.1)
+//    {
+//      int a;
+//      ++a;
+//    }
+
+    // L2
+//    auto d = norm2(from, to);
+
+//    if(d > max_step_)
+//    {
+//      const double lambda = max_step_ / d;
+
+//      for(uint i = 0; i < S::dim; ++i)
+//      {
+//        to[i] = from[i] + (to[i] - from[i]) * lambda;
+//      }
+//    }
   }
 
   std::shared_ptr<RRTTree<S::dim>> rrt_tree() const

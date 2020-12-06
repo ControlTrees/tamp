@@ -12,7 +12,7 @@ TEST(SampleSpace, SampleBounds)
     auto s = space.sample();
 
     //
-    std::cout << s[0] << " " << s[1] << std::endl;
+    //std::cout << s[0] << " " << s[1] << std::endl;
     //
 
     EXPECT_GE(s[0], -1.0);
@@ -67,21 +67,35 @@ TEST(RRTPlanner, PlanFreeSpace)
   EXPECT_TRUE(goal_cnd(path.back()));
 }
 
-TEST(RRTPlanner, SaveRoadMap)
+TEST(RRTPlanner, ParseMap)
 {
   SampleSpace<2> space(std::array<std::pair<double, double>, 2>{std::pair<double, double>{-1.0, 1.0},
                                                                 std::pair<double, double>{-1.0, 1.0}});
 
-  RRT<SampleSpace<2>> rrt(space, 0.2);
+  MapLoader map("data/map0.pgm", space.bounds());
 
-  auto state_checker = [](const std::array<double, 2> & state) -> bool
+  EXPECT_FALSE(map.is_state_valid({0, 0.6}));
+  EXPECT_TRUE(map.is_state_valid({0, 0}));
+  EXPECT_TRUE(map.is_state_valid({0.8, 0.2}));
+  EXPECT_TRUE(map.is_state_valid({0.8, 0.1}));
+}
+
+TEST(RRTPlanner, PlanOnMap)
+{
+  SampleSpace<2> space(std::array<std::pair<double, double>, 2>{std::pair<double, double>{-1.0, 1.0},
+                                                                std::pair<double, double>{-1.0, 1.0}});
+
+  RRT<SampleSpace<2>> rrt(space, 0.1);
+
+  MapLoader map("data/map0.pgm", space.bounds());
+  auto state_checker = [&map](const std::array<double, 2> & state) -> bool
   {
-    return fabs(state[0] - 0.5) > 0.3 || fabs(state[1] - 0.5) > 0.25;
+    return map.is_state_valid(state);
   };
 
   auto goal_cnd = [](const std::array<double, 2> & state) -> bool
   {
-    return fabs(state[0] - 0.9) < 0.05 && fabs(state[1] - 0.9) < 0.05;
+    return fabs(state[0] - 0.0) < 0.05 && fabs(state[1] - 0.9) < 0.05;
   };
 
   auto transition = [](const std::array<double, 2> & from, const std::array<double, 2> & to) -> bool
@@ -92,7 +106,7 @@ TEST(RRTPlanner, SaveRoadMap)
   rrt.set_state_checker(state_checker);
   rrt.set_transition_checker(transition);
 
-  auto path = rrt.plan({0.0, 0.0}, goal_cnd, 1000);
+  auto path = rrt.plan({0.0, 0.0}, goal_cnd, 5000);
 
   Drawer drawer(space.bounds(), 100);
 

@@ -3,6 +3,68 @@
 #include <rrt.h>
 #include <fstream>
 
+class MapLoader
+{
+public:
+  MapLoader(const std::string& filepath, const std::array<std::pair<double, double>, 2> & bounds)
+    : bounds_(bounds)
+  {
+    uint w{0};
+    uint h{0};
+
+    std::ifstream input(filepath, std::ifstream::in);
+
+    std::string content;
+    std::getline(input, content); // format
+    std::getline(input, content); // comments
+    std::getline(input, content, ' '); // width
+    w = std::stoi(content);
+
+    std::getline(input, content);
+    h = std::stoi(content);
+
+    // init buffer and parse map
+    buffer_ = std::vector<std::vector<uint>>(h);
+    for(auto& line: buffer_)
+    {
+      line = std::vector<uint>(w);
+
+      for(auto& v: line)
+      {
+        std::getline(input, content);
+        v = std::stoi(content);
+      }
+    }
+
+    input.close();
+
+    ppm_ = w / (bounds[0].second - bounds[0].first);
+  }
+
+  bool is_state_valid(const std::array<double, 2> & xy) const
+  {
+    auto ij = get_ij(xy);
+
+    return (buffer_[ij[0]][ij[1]] == 255);
+  }
+
+  std::array<int, 2> get_ij(const std::array<double, 2> & xy) const
+  {
+    std::array<int, 2>ij;
+
+    ij[0] = buffer_.size() - (xy[1] - bounds_[1].first) * ppm_;
+    ij[1] = (xy[0] - bounds_[0].first) * ppm_;
+
+    return ij;
+  }
+
+private:
+  std::array<std::pair<double, double>, 2> bounds_;
+  uint ppm_;
+
+  std::vector<std::vector<uint>> buffer_;
+};
+
 class Drawer
 {
 public:
@@ -13,11 +75,11 @@ public:
     uint w = (bounds_[0].second - bounds_[0].first) * ppm;
     uint h = (bounds_[1].second - bounds_[1].first) * ppm;
 
-    buffer_ = std::vector<std::vector<uint>>(w);
+    buffer_ = std::vector<std::vector<uint>>(h);
 
     for(auto& line: buffer_)
     {
-      line = std::vector<uint>(h, 10);
+      line = std::vector<uint>(w, 10);
     }
   }
 
@@ -32,6 +94,8 @@ public:
       {
         auto to = child->state;
         auto to_ij = get_ij(to);
+
+//        buffer_[to_ij[0]][to_ij[1]] = 5;
 
         if(from_ij[0] < to_ij[0])
           draw_line(from_ij, to_ij, 5);
@@ -58,8 +122,8 @@ public:
 
     for(double s = 0; s < n; ++s)
     {
-      auto j = from[0] + s/n * (to[0] - from[0]);
-      auto i = from[1] + s/n * (to[1] - from[1]);
+      auto i = from[0] + s/n * (to[0] - from[0]);
+      auto j = from[1] + s/n * (to[1] - from[1]);
 
       buffer_[i][j] = color;
     }
@@ -92,8 +156,8 @@ private:
   {
     std::array<int, 2>ij;
 
-    ij[0] = (xy[0] - bounds_[0].first) * ppm_;
-    ij[1] = buffer_.size() - (xy[1] - bounds_[1].first) * ppm_;
+    ij[0] = buffer_.size() - (xy[1] - bounds_[1].first) * ppm_;
+    ij[1] = (xy[0] - bounds_[0].first) * ppm_;
 
     return ij;
   }

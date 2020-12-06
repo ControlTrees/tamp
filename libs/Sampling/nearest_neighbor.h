@@ -122,12 +122,12 @@ public:
     }
     else // search first right
     {
-      if(state[from->axis] - dmin < from->splitting_value && from->right)
+      if(state[from->axis] + dmin >= from->splitting_value && from->right)
       {
         nearest_neighbor(state, from->right, nearest, dmin);
       }
 
-      if(state[from->axis] + dmin >= from->splitting_value && from->left)
+      if(state[from->axis] - dmin < from->splitting_value && from->left)
       {
         nearest_neighbor(state, from->left, nearest, dmin);
       }
