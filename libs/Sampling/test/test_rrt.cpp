@@ -72,11 +72,11 @@ TEST(RRTPlanner, SaveRoadMap)
   SampleSpace<2> space(std::array<std::pair<double, double>, 2>{std::pair<double, double>{-1.0, 1.0},
                                                                 std::pair<double, double>{-1.0, 1.0}});
 
-  RRT<SampleSpace<2>> rrt(space);
+  RRT<SampleSpace<2>> rrt(space, 0.2);
 
   auto state_checker = [](const std::array<double, 2> & state) -> bool
   {
-    return fabs(state[0] - 0.5) > 0.3 || fabs(state[1] - 0.5) > 0.3;
+    return fabs(state[0] - 0.5) > 0.3 || fabs(state[1] - 0.5) > 0.25;
   };
 
   auto goal_cnd = [](const std::array<double, 2> & state) -> bool
@@ -92,7 +92,7 @@ TEST(RRTPlanner, SaveRoadMap)
   rrt.set_state_checker(state_checker);
   rrt.set_transition_checker(transition);
 
-  auto path = rrt.plan({0.0, 0.0}, goal_cnd, 500);
+  auto path = rrt.plan({0.0, 0.0}, goal_cnd, 1000);
 
   Drawer drawer(space.bounds(), 100);
 

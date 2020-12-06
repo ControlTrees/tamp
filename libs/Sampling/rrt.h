@@ -97,8 +97,9 @@ template<typename S> // sample space
 class RRT
 {
 public:
-  RRT(const S & space)
+  RRT(const S & space, double max_step=1.0)
     : space_(space)
+    , max_step_(max_step) // max tree expansion
   {
 
   }
@@ -142,8 +143,8 @@ public:
   }
 
   std::deque<std::array<double, S::dim>> plan(const std::array<double, S::dim> & start,
-                                             const std::function<bool(const std::array<double, S::dim> &)> & goal_cnd,
-                                             uint n_iter_max)
+                                              const std::function<bool(const std::array<double, S::dim> &)> & goal_cnd,
+                                              uint n_iter_max)
   {
     assert(state_checker_);
     assert(transition_checker_);
@@ -155,18 +156,18 @@ public:
     for(uint i = 0; i < n_iter_max; ++i)
     {
       auto s = space_.sample();
+      auto node = kdtree_->nearest_neighbor(s);
+
+      backtrack(node->state, s);
 
       if(state_checker_(s))
-      {
-        auto node = kdtree_->nearest_neighbor(s);
-
+      {  
         if(transition_checker_(node->state, s))
         {
           auto from = rrttree_->get_node(node->id);
           auto to = rrttree_->add_node(s);
 
           kdtree_->add_node(to->state, to->id);
-
           rrttree_->add_edge(from, to);
 
           if(goal_cnd(to->state))
@@ -207,6 +208,24 @@ public:
     return final_nodes_.size() > 0 ? paths[best] : std::deque<std::array<double, S::dim>>();
   }
 
+  void backtrack(const std::array<double, S::dim>& from, std::array<double, S::dim>& to) const
+  {
+    double max_step = 0;
+    for(auto i = 0; i < S::dim; ++i)
+    {
+      const auto delta = fabs(from[i] - to[i]);
+      max_step = std::max(max_step, delta);
+    }
+
+    if(max_step > max_step_)
+    {
+      for(auto i = 0; i < S::dim; ++i)
+      {
+        to[i] = from[i] + (to[i] - from[i]) * max_step_ / max_step;
+      }
+    }
+  }
+
   std::shared_ptr<RRTTree<S::dim>> rrt_tree() const
   {
     return rrttree_;
@@ -214,6 +233,7 @@ public:
 
 private:
   const S & space_;
+  const double max_step_;
   std::shared_ptr<RRTTree<S::dim>> rrttree_;
   std::unique_ptr<KDTree<S::dim>> kdtree_;
   std::function<bool(const std::array<double, S::dim> &)> state_checker_;
