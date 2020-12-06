@@ -140,6 +140,39 @@ TEST(KDTree, NearestNeighbors)
   }
 }
 
+// neighbors in radius
+TEST(KDTree, NearestNeighborsInRadius)
+{
+  KDTree<2> tree({3.0, 6.0});
+
+  tree.add_node({17.0, 15.0}, 1);
+  tree.add_node({13.0, 15.0}, 2);
+  tree.add_node({6.0, 12.0}, 3);
+  tree.add_node({9.0, 1.0}, 4);
+  tree.add_node({2.0, 7.0}, 5);
+  tree.add_node({10.0, 19.0}, 6);
+
+  {
+  auto nodes = tree.radius_neighbors({12.0, 17.0}, 5.5);
+  EXPECT_EQ(nodes.size(), 3);
+  }
+
+  {
+  auto nodes = tree.radius_neighbors({10.0, 1.0}, 5.0);
+  EXPECT_EQ(nodes.size(), 1);
+  }
+
+  {
+  auto nodes = tree.radius_neighbors({3.0, 7.0}, 1.5);
+  EXPECT_EQ(nodes.size(), 2);
+  }
+
+  {
+  auto nodes = tree.radius_neighbors({10.0, 1.0}, 0.1);
+  EXPECT_EQ(nodes.size(), 0);
+  }
+}
+
 //
 int main(int argc, char **argv)
 {
