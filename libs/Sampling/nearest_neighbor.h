@@ -7,19 +7,7 @@
 #include <deque>
 #include <algorithm>
 #include <iostream>
-
-template<std::size_t N>
-double norm2(const std::array<double, N> & a, const std::array<double, N> & b)
-{
-  double sqdist = 0;
-  for(auto i = 0; i < N; ++i)
-  {
-    const auto delta = a[i] - b[i];
-    sqdist += delta * delta;
-  }
-
-  return sqrt(sqdist);
-}
+#include <common.h>
 
 template <std::size_t N>
 struct KDTreeNode

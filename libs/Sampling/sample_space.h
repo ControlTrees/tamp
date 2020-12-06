@@ -1,5 +1,8 @@
 #pragma once
 
+#include <cstdlib>
+#include <array>
+
 inline double sample_01()
 {
   return double(rand()) / RAND_MAX;

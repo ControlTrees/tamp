@@ -83,7 +83,6 @@ TEST(RRTPlanner, PlanOnMap)
   drawer.save("rrt_raod_map.pgm");
 }
 
-//
 int main(int argc, char **argv)
 {
   testing::InitGoogleTest(&argc, argv);

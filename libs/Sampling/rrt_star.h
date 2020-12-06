@@ -8,7 +8,7 @@
 #include <cassert>
 #include <nearest_neighbor.h>
 #include <sample_space.h>
-#include <rrt_common.h>
+#include <common.h>
 
 template <std::size_t N>
 struct RRTStarNode

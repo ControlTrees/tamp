@@ -111,8 +111,8 @@ public:
 
   void draw_line(const std::array<int, 2> & from, const std::array<int, 2> & to, uint color)
   {
-    auto di = fabs(to[0] - from[0]);
-    auto dj = fabs(to[1] - from[1]);
+    auto di = std::abs(to[0] - from[0]);
+    auto dj = std::abs(to[1] - from[1]);
 
     auto n = di > dj ? di : dj;
 
