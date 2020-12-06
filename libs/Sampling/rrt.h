@@ -3,6 +3,7 @@
 #include <array>
 #include <cstdlib>
 #include <list>
+#include <deque>
 #include <functional>
 #include <cassert>
 #include <nearest_neighbor.h>
@@ -31,6 +32,9 @@ public:
 
     return s;
   }
+
+  std::array<std::pair<double, double>, N> bounds() const { return bounds_; }
+
 public:
   static constexpr uint dim = N;
 
@@ -79,11 +83,9 @@ public:
     to->parent = from;
   }
 
-  std::list<std::array<double, N>> get_best_path() const
+  const std::vector<std::shared_ptr<RRTTreeNode<N>>> & nodes() const
   {
-    // get all goal nodes
-    // backtrack
-    // forward pass to extract shortest
+    return nodes_;
   }
 
 private:
@@ -111,9 +113,9 @@ public:
     transition_checker_ = transition_checker;
   }
 
-  std::list<std::array<double, S::dim>> get_path_to(const std::shared_ptr<RRTTreeNode<S::dim>> & to)
+  std::deque<std::array<double, S::dim>> get_path_to(const std::shared_ptr<RRTTreeNode<S::dim>> & to)
   {
-    std::list<std::array<double, S::dim>> path;
+    std::deque<std::array<double, S::dim>> path;
 
     auto current = to;
     path.push_front(to->state);
@@ -127,7 +129,19 @@ public:
     return path;
   }
 
-  std::list<std::array<double, S::dim>> plan(const std::array<double, S::dim> & start,
+  double get_cost(const std::deque<std::array<double, S::dim>> & path) const
+  {
+    double cost = 0;
+
+    for(uint i = 1; i < path.size(); ++i)
+    {
+      cost += norm2(path[i-1], path[i]);
+    }
+
+    return cost;
+  }
+
+  std::deque<std::array<double, S::dim>> plan(const std::array<double, S::dim> & start,
                                              const std::function<bool(const std::array<double, S::dim> &)> & goal_cnd,
                                              uint n_iter_max)
   {
@@ -135,7 +149,7 @@ public:
     assert(transition_checker_);
 
     // grow tree
-    rrttree_ = std::make_unique<RRTTree<S::dim>>(start);
+    rrttree_ = std::make_shared<RRTTree<S::dim>>(start);
     kdtree_ = std::make_unique<KDTree<S::dim>>(start);
 
     for(uint i = 0; i < n_iter_max; ++i)
@@ -164,20 +178,43 @@ public:
       }
     }
 
-    // extract best solution
-    std::list<std::array<double, S::dim>> path;
-
+    // extract solutions
+    std::vector<std::deque<std::array<double, S::dim>>> paths;
+    std::vector<double> costs;
+    paths.reserve(final_nodes_.size());
+    costs.reserve(final_nodes_.size());
     if(!final_nodes_.empty())
     {
-      path = get_path_to(final_nodes_.back());
+      const auto path = get_path_to(final_nodes_.back());
+      const auto cost = get_cost(path);
+
+      paths.push_back(path);
+      costs.push_back(cost);
     }
 
-    return path;
+    // return best
+    uint best = 0;
+    double best_cost = std::numeric_limits<double>::infinity();
+    for(uint i = 0; i < paths.size(); ++i)
+    {
+      if(costs[i] < best_cost)
+      {
+        best = i;
+        best_cost = costs[i];
+      }
+    }
+
+    return final_nodes_.size() > 0 ? paths[best] : std::deque<std::array<double, S::dim>>();
+  }
+
+  std::shared_ptr<RRTTree<S::dim>> rrt_tree() const
+  {
+    return rrttree_;
   }
 
 private:
   const S & space_;
-  std::unique_ptr<RRTTree<S::dim>> rrttree_;
+  std::shared_ptr<RRTTree<S::dim>> rrttree_;
   std::unique_ptr<KDTree<S::dim>> kdtree_;
   std::function<bool(const std::array<double, S::dim> &)> state_checker_;
   std::function<bool(const std::array<double, S::dim> &, const std::array<double, S::dim> &)> transition_checker_;

@@ -134,70 +134,7 @@ public:
     }
   }
 
-//  std::shared_ptr<KDTreeNode<N>> nearest_neighbor(const std::array<double, N> & state) const
-//  {
-//    // gather leafs
-//    std::list<std::shared_ptr<KDTreeNode<N>>> path;
-//    get_path_from(root_, state, path);
-
-//    std::list<std::shared_ptr<KDTreeNode<N>>> candidates;
-//    for(const auto & node: path)
-//    {
-//      candidates.push_back(node);
-//    }
-
-//    // comparison function
-//    auto comp = [&state](const std::shared_ptr<KDTreeNode<N>> & a)
-//    {
-//      double sqdist = 0;
-//      for(auto i = 0; i < N; ++i)
-//      {
-//        const auto delta = state[i] - a->state[i];
-//        sqdist += delta * delta;
-//      }
-
-//      return sqdist;
-//    };
-
-//    // check distance on each leaf
-//    double minD2 = std::numeric_limits<double>::infinity();
-//    auto nearest = *candidates.begin();
-
-//    std::cout << "candidates " << candidates.size() << std::endl;
-
-//    for(const auto & node: candidates)
-//    {
-//      double d2 = 0;
-//      for(auto i = 0; i < N; ++i)
-//      {
-//        const auto delta = state[i] - node->state[i];
-//        d2 += delta * delta;
-//      }
-
-//      if(d2 < minD2)
-//      {
-//        nearest = node;
-//        minD2 = d2;
-//      }
-//    }
-
-//    return nearest;
-//  }
-
   std::shared_ptr<KDTreeNode<N>> root() const { return root_; }
-
-private:
-//  void get_path_from(const std::shared_ptr<KDTreeNode<N>> & node, const std::array<double, N> & state, std::list<std::shared_ptr<KDTreeNode<N>>> & path) const
-//  {
-//    auto current = node;
-
-//    while(current) // will return on its own when the leat is found
-//    {
-//      path.push_back(current);
-
-//      current = state[current->axis] < current->splitting_value ? current->left : current->right;
-//    }
-//  }
 
   std::shared_ptr<KDTreeNode<N>> root_;
 };
