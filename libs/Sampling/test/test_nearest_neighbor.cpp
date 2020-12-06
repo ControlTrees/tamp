@@ -154,6 +154,8 @@ TEST(KDTree, NearestNeighborsInRadius)
 
   {
   auto nodes = tree.radius_neighbors({12.0, 17.0}, 5.5);
+  EXPECT_EQ(nodes.front()->state[0], 13);
+  EXPECT_EQ(nodes.front()->state[1], 15);
   EXPECT_EQ(nodes.size(), 3);
   }
 
@@ -163,7 +165,7 @@ TEST(KDTree, NearestNeighborsInRadius)
   }
 
   {
-  auto nodes = tree.radius_neighbors({3.0, 7.0}, 1.5);
+  auto nodes = tree.radius_neighbors({3.0, 6.5}, 1.5);
   EXPECT_EQ(nodes.size(), 2);
   }
 

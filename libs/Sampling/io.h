@@ -83,7 +83,8 @@ public:
     }
   }
 
-  void draw_tree(const std::shared_ptr<RRTTree<2>> & tree)
+  template<typename T>
+  void draw_tree(const std::shared_ptr<T> & tree)
   {
     for(const auto& node: tree->nodes())
     {
@@ -95,12 +96,7 @@ public:
         auto to = child->state;
         auto to_ij = get_ij(to);
 
-//        buffer_[to_ij[0]][to_ij[1]] = 5;
-
-        if(from_ij[0] < to_ij[0])
-          draw_line(from_ij, to_ij, 5);
-        else
-          draw_line(to_ij, from_ij, 5);
+        draw_line(from_ij, to_ij, 5);
       }
     }
   }
@@ -115,7 +111,7 @@ public:
 
   void draw_line(const std::array<int, 2> & from, const std::array<int, 2> & to, uint color)
   {
-    auto di = to[0] - from[0];
+    auto di = fabs(to[0] - from[0]);
     auto dj = fabs(to[1] - from[1]);
 
     auto n = di > dj ? di : dj;

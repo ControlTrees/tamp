@@ -27,5 +27,5 @@ target_link_libraries(
  ${project_name}
 # ${Boost_LIBRARIES}
 )
-
+set_target_properties(${project_name} PROPERTIES LINKER_LANGUAGE CXX)
 add_subdirectory(test)

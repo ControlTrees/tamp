@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <memory>
 #include <list>
+#include <deque>
 #include <algorithm>
 #include <iostream>
 
@@ -42,6 +43,8 @@ public:
     root_->splitting_value = state[0];
     root_->state = state;
   }
+
+  std::shared_ptr<KDTreeNode<N>> root() const { return root_; }
 
   void add_node(const std::array<double, N> & state, uint id)
   {
@@ -93,6 +96,17 @@ public:
     return nearest;
   }
 
+  std::deque<std::shared_ptr<KDTreeNode<N>>> radius_neighbors(const std::array<double, N> & state, double radius) const
+  {
+    std::deque<std::shared_ptr<KDTreeNode<N>>> neighbors;
+    std::list<double> ds;
+
+    radius_neighbors(state, root_, radius, neighbors, ds);
+
+    return neighbors;
+  }
+
+private:
   void nearest_neighbor(const std::array<double, N> & state,
                         const std::shared_ptr<KDTreeNode<N>> from,
                         std::shared_ptr<KDTreeNode<N>> & nearest,
@@ -134,7 +148,54 @@ public:
     }
   }
 
-  std::shared_ptr<KDTreeNode<N>> root() const { return root_; }
+  void radius_neighbors(const std::array<double, N> & state,
+                           const std::shared_ptr<KDTreeNode<N>> from,
+                           double radius,
+                           std::deque<std::shared_ptr<KDTreeNode<N>>> & neighbors,
+                           std::list<double> & ds) const
+  {
+    const auto d = norm2(from->state, state);
+
+    if(d <= radius)
+    {
+      if(ds.size() && d < ds.front())
+      {
+        neighbors.push_front(from);
+        ds.push_front(d);
+      }
+      else
+      {
+        neighbors.push_back(from);
+        ds.push_back(d);
+      }
+    }
+
+    // go down
+    if(state[from->axis] < from->splitting_value) // search first left
+    {
+      if(state[from->axis] - radius < from->splitting_value && from->left)
+      {
+        radius_neighbors(state, from->left, radius, neighbors, ds);
+      }
+
+      if(state[from->axis] + radius >= from->splitting_value && from->right)
+      {
+        radius_neighbors(state, from->right, radius, neighbors, ds);
+      }
+    }
+    else // search first right
+    {
+      if(state[from->axis] + radius >= from->splitting_value && from->right)
+      {
+        radius_neighbors(state, from->right, radius, neighbors, ds);
+      }
+
+      if(state[from->axis] - radius < from->splitting_value && from->left)
+      {
+        radius_neighbors(state, from->left, radius, neighbors, ds);
+      }
+    }
+  }
 
   std::shared_ptr<KDTreeNode<N>> root_;
 };

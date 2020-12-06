@@ -11,33 +11,34 @@
 #include <rrt_common.h>
 
 template <std::size_t N>
-struct RRTTreeNode
+struct RRTStarNode
 {
-  std::weak_ptr<RRTTreeNode<N>> parent;
+  std::weak_ptr<RRTStarNode<N>> parent;
   std::array<double, N> state;
-  std::list<std::shared_ptr<RRTTreeNode<N>>> children;
+  std::list<std::shared_ptr<RRTStarNode<N>>> children;
+  double cost{0}; // form root
   uint id{0};
 };
 
 template<uint N>
-class RRTTree
+class RRTStarTree
 {
 public:
-  RRTTree(const std::array<double, N> & root_state)
+  RRTStarTree(const std::array<double, N> & root_state)
   {
-    root_ = std::make_shared<RRTTreeNode<N>>();
+    root_ = std::make_shared<RRTStarNode<N>>();
     root_->state = root_state;
     nodes_.push_back(root_);
   }
 
-  std::shared_ptr<RRTTreeNode<N>> get_node(uint id) const
+  std::shared_ptr<RRTStarNode<N>> get_node(uint id) const
   {
     return nodes_[id];
   }
 
-  std::shared_ptr<RRTTreeNode<N>> add_node(const std::array<double, N> & state)
+  std::shared_ptr<RRTStarNode<N>> add_node(const std::array<double, N> & state)
   {
-    auto node = std::make_shared<RRTTreeNode<N>>();
+    auto node = std::make_shared<RRTStarNode<N>>();
     node->state = state;
     node->id = nodes_.size();
     nodes_.push_back(node);
@@ -45,29 +46,31 @@ public:
     return node;
   }
 
-  void add_edge(const std::shared_ptr<RRTTreeNode<N>> & from, const std::shared_ptr<RRTTreeNode<N>> & to) const
+  void add_edge(const std::shared_ptr<RRTStarNode<N>> & from, const std::shared_ptr<RRTStarNode<N>> & to) const
   {
     from->children.push_back(to);
     to->parent = from;
+    to->cost = from->cost + norm2(from->state, to->state);
   }
 
-  const std::vector<std::shared_ptr<RRTTreeNode<N>>> & nodes() const
+  const std::vector<std::shared_ptr<RRTStarNode<N>>> & nodes() const
   {
     return nodes_;
   }
 
 private:
-  std::vector<std::shared_ptr<RRTTreeNode<N>>> nodes_;
-  std::shared_ptr<RRTTreeNode<N>> root_;
+  std::vector<std::shared_ptr<RRTStarNode<N>>> nodes_;
+  std::shared_ptr<RRTStarNode<N>> root_;
 };
 
 template<typename S> // sample space
-class RRT
+class RRTStar
 {
 public:
-  RRT(const S & space, double max_step=1.0, double radius=1.0)
+  RRTStar(const S & space, double max_step=1.0, double radius=1.0)
     : space_(space)
     , max_step_(max_step) // max tree expansion
+    , radius_(radius)
   {
 
   }
@@ -82,7 +85,7 @@ public:
     transition_checker_ = transition_checker;
   }
 
-  std::deque<std::array<double, S::dim>> get_path_to(const std::shared_ptr<RRTTreeNode<S::dim>> & to)
+  std::deque<std::array<double, S::dim>> get_path_to(const std::shared_ptr<RRTStarNode<S::dim>> & to)
   {
     std::deque<std::array<double, S::dim>> path;
 
@@ -107,7 +110,7 @@ public:
     assert(transition_checker_);
 
     // grow tree
-    rrttree_ = std::make_shared<RRTTree<S::dim>>(start);
+    rrttree_ = std::make_shared<RRTStarTree<S::dim>>(start);
     kdtree_ = std::make_unique<KDTree<S::dim>>(start);
 
     for(uint i = 0; i < n_iter_max; ++i)
@@ -119,18 +122,53 @@ public:
 
       if(state_checker_(s))
       {  
-        if(transition_checker_(node->state, s))
+        // get other neighbors
+        auto neighbors = kdtree_->radius_neighbors(s, radius_);
+        if(neighbors.size() > 0)
         {
-          auto from = rrttree_->get_node(node->id);
-          auto to = rrttree_->add_node(s);
+          //assert(neighbors.front()->state[0] == node->state[0]);
+          neighbors.pop_front(); // front must be equal to node per defition, we don't need to consider it
+        }
 
-          kdtree_->add_node(to->state, to->id);
-          rrttree_->add_edge(from, to);
+        // choose neighbor leading to best cost
+        auto best_from = rrttree_->get_node(node->id);
+        double best_cost = best_from->cost + norm2(best_from->state, s);
 
-          if(goal_cnd(to->state))
+        for(const auto& neighbor: neighbors)
+        {
+          const auto & from = rrttree_->get_node(neighbor->id);
+          const double cost = from->cost + norm2(from->state, s);
+
+          if(cost < best_cost)
+          {
+            best_from = from;
+            best_cost = cost;
+          }
+        }
+
+        if(transition_checker_(best_from->state, s))
+        {
+          // commit edge
+          auto new_node = rrttree_->add_node(s);
+
+          kdtree_->add_node(new_node->state, new_node->id);
+          rrttree_->add_edge(best_from, new_node);
+
+          if(goal_cnd(new_node->state))
           {
             // found solution
-            final_nodes_.push_back(to);
+            final_nodes_.push_back(new_node);
+          }
+
+          // rewire
+          for(const auto& neighbor: neighbors)
+          {
+            auto to = rrttree_->get_node(neighbor->id);
+            if(best_cost + norm2(s, to->state) < to->cost)
+            {
+              to->parent = new_node;
+              new_node->children.push_back(to);
+            }
           }
         }
       }
@@ -166,7 +204,7 @@ public:
     return final_nodes_.size() > 0 ? paths[best] : std::deque<std::array<double, S::dim>>();
   }
 
-  std::shared_ptr<RRTTree<S::dim>> rrt_tree() const
+  std::shared_ptr<RRTStarTree<S::dim>> rrt_tree() const
   {
     return rrttree_;
   }
@@ -174,9 +212,10 @@ public:
 private:
   const S & space_;
   const double max_step_;
-  std::shared_ptr<RRTTree<S::dim>> rrttree_;
+  const double radius_;
+  std::shared_ptr<RRTStarTree<S::dim>> rrttree_;
   std::unique_ptr<KDTree<S::dim>> kdtree_;
   std::function<bool(const std::array<double, S::dim> &)> state_checker_;
   std::function<bool(const std::array<double, S::dim> &, const std::array<double, S::dim> &)> transition_checker_;
-  std::list<std::shared_ptr<RRTTreeNode<S::dim>>> final_nodes_;
+  std::list<std::shared_ptr<RRTStarNode<S::dim>>> final_nodes_;
 };
